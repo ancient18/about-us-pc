@@ -1,4 +1,4 @@
-const baseUrl = process.env.NODE_EVN === 'development' ?
+const baseUrl = process.env.NODE_ENV === 'development' ?
   "http://localhost:3000/api" :
   'https://be-prod.redrock.cqupt.edu.cn/aboutus';
 

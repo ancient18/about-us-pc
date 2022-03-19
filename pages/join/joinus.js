@@ -37,9 +37,19 @@ const department = [
     '其他',
 ]
 
-export default function Index({ vh }) {
-    const [data, setData] = useState([]);
-    const [card, setCard] = useState([])
+export async function getStaticProps() {
+    const card = await getCard()
+    const qAndA = await getQAndA()
+    return {
+        props: {
+            card: card.cards,
+            qAndA: qAndA.qAndA
+        }
+    }
+}
+
+export default function Index({ vh, card, qAndA }) {
+
     const [select, setSelect] = useState(0)
     const [$select, $setSelect] = useState(0)
     const $slider = useRef(null)
@@ -50,15 +60,8 @@ export default function Index({ vh }) {
         $setSelect(0)
     }, [select])
 
-    useEffect(() => {
-        getCard().then(res => {
-            setCard(res.cards)
-        })
-        getQAndA().then(res => {
-            setData(res.qAndA)
-        })
-    }, [])
-    const filterData = data.filter(item => item.department === department[select])
+
+    const filterData = qAndA.filter(item => item.department === department[select])
     return (
         <div className={styles.box} style={{ paddingBottom: 117 * vh, paddingTop: 48 * vh }}>
             <div
