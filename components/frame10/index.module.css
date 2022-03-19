@@ -1,0 +1,71 @@
+.frame {
+  user-select: none;
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    linear-gradient(
+      284.24deg,
+      rgba(134, 137, 231, 0.2) -0.11%,
+      rgba(0, 0, 0, 0) 63.13%
+    ),
+    linear-gradient(
+      141.58deg,
+      rgba(244, 130, 130, 0.2) -30.92%,
+      rgba(244, 130, 130, 0) 74.94%
+    ),
+    linear-gradient(0deg, rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.9)), #e2e2e2;
+}
+.square {
+  position: absolute;
+  width: 268px;
+  left: 590px;
+}
+.year_selector {
+  width: 514px;
+  position: absolute;
+  left: 50%;
+  margin-left: -257px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.selector {
+  margin-right: 48px;
+  transition: all 0.1s linear;
+}
+.font1 {
+  /* font1 */
+  color: #8b8b8b;
+}
+.font2 {
+  /* font4 */
+  color: #d9d9d9;
+}
+.font3 {
+  /* font2 */
+  color: #fafafa;
+}
+.canvas {
+  z-index: 999;
+  position: absolute;
+  top: 0;
+}
+.s1 {
+  color: #fff;
+}
+.arrow1,
+.arrow2 {
+  position: absolute;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  cursor: pointer;
+}
+.arrow1 {
+  left: 450px;
+  transform: rotate(180deg);
+}
+.arrow2 {
+  right: 450px;
+}

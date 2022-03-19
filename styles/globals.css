@@ -1,0 +1,113 @@
+@font-face {
+  font-family: pingfang-bold;
+  src: url(../assets/font/PINGFANG\ BOLD.TTF);
+}
+
+@font-face {
+  font-family: pingfang-heavy;
+  src: url(../assets/font/PINGFANG\ HEAVY.TTF);
+}
+
+@font-face {
+  font-family: pingfang-medium;
+  src: url(../assets/font/PINGFANG\ MEDIUM.TTF);
+}
+
+@font-face {
+  font-family: pingfang-regular;
+  src: url(../assets/font/PINGFANG\ REGULAR.TTF);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: pingfang-regular;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  height: 100vh;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.font1 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.font2 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.font3 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 50px;
+}
+
+.font4 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.font5 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.font6 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.cannot_see {
+  visibility: hidden;
+}
+
+li.slick-active {
+  width: 25px !important;
+  height: 10px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 17px !important;
+}
+
+.slick-vertical .slick-slide {
+  border: 0 !important;
+}
+
+.slider {
+  height: 100vh;
+  display: flex;
+}
+
+
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

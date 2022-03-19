@@ -1,0 +1,71 @@
+.frame {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100vw;
+  padding-left: 120px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    linear-gradient(
+      284.24deg,
+      rgba(134, 137, 231, 0.2) -0.11%,
+      rgba(0, 0, 0, 0) 63.13%
+    ),
+    linear-gradient(
+      141.58deg,
+      rgba(244, 130, 130, 0.2) -30.92%,
+      rgba(244, 130, 130, 0) 74.94%
+    ),
+    linear-gradient(0deg, rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.9)), #e2e2e2;
+}
+.square {
+  width: 283px;
+  background: #eff6f9;
+  border-radius: 32px;
+  margin-right: 48px;
+}
+.fragment1 {
+  width: 207px;
+  margin-right: 48px;
+  background-color: #1b1b1b;
+  border-radius: 32px;
+}
+.fragment2 {
+  width: 118px;
+  background-color: #1b1b1b;
+  border-radius: 32px;
+  margin-right: 84px;
+}
+.square2 {
+  width: 238px;
+  margin-right: 145px;
+}
+.pic1 {
+  width: 76px;
+  margin-left: 42px;
+}
+.title2 {
+  margin-left: 48px;
+}
+.pic2 {
+  width: 155px;
+  margin-left: 6px;
+}
+.title3 {
+  margin-left: 42px;
+}
+
+.square3 {
+  position: absolute;
+  top: 7vh;
+  left: -22vh;
+  bottom: 0;
+  right: 0px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  margin: auto;
+  display: block;
+  width: 50vh;
+  height: 25vh;
+}

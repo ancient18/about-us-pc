@@ -1,0 +1,55 @@
+.frame {
+  height: 100vh;
+  background: url(../../assets/img/frame2/logo.png) center no-repeat #000;
+  background-size: 100% 100%;
+  position: relative;
+}
+.bannar {
+  position: absolute;
+  width: 547px;
+  background: url(../../assets/img/frame2/Rectangle\ 6.png) center no-repeat;
+  background-size: 100% 100%;
+  left: 120px;
+  font-family: Dubai;
+}
+.font1 {
+  width: 386px;
+  position: absolute;
+  left: 68px;
+}
+.star1 {
+  position: absolute;
+  width: 80px;
+  left: 273px;
+  top: 5px;
+}
+.star2 {
+  position: absolute;
+  width: 45px;
+  left: 341px;
+}
+.vector {
+  position: absolute;
+  width: 240px;
+  left: 510px;
+}
+.font2 {
+  position: absolute;
+  left: 70px;
+  width: 440px;
+  font-size: 16px;
+  color: #c4c4c4;
+  line-height: 24px;
+}
+.title1 {
+  width: 619px;
+  position: absolute;
+  left: 120px;
+  color: #fafafa;
+}
+.article1 {
+  width: 1197px;
+  position: absolute;
+  left: 120px;
+  color: #d9d9d9;
+}

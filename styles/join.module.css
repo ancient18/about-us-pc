@@ -1,0 +1,158 @@
+.box {
+  padding: 0 120px;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.008) -7.97%,
+      rgba(0, 0, 0, 0) 59.21%
+    ),
+    #f9f9f9;
+}
+
+.box2 {
+  border-color: #6a6a6a;
+  border-radius: 32px;
+  width: 489px;
+  margin: 0 auto;
+  border: 1px solid;
+  color: #000;
+}
+
+.box2 > div:nth-child(1) {
+  margin-right: 36px;
+}
+
+.box2 > div:nth-child(2) {
+  width: 144px;
+}
+
+.h1 {
+  position: relative;
+  color: #000;
+  display: flex;
+  align-items: center;
+  left: 13px;
+}
+
+.h1 > div {
+  z-index: 1;
+}
+
+.h1 > span {
+  position: absolute;
+  left: -13px;
+  width: 21px;
+  height: 21px;
+  background-color: #ff406e;
+  z-index: 0;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.item {
+  width: 384px;
+  background: #ffffff;
+  box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
+  border-radius: 32px;
+  margin-right: 24px;
+}
+
+.a {
+  width: 152px;
+  margin-right: 34px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.p {
+  width: 121px;
+  height: 121px;
+  position: relative;
+}
+
+.tab_container {
+  position: relative;
+  width: 1200px;
+  border-radius: 32px;
+  border-top-left-radius: 0;
+  box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
+  padding: 0 88px;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.tab_container > div:nth-child(1) {
+  color: #141414;
+  width: 100%;
+}
+.tab_container > div:nth-child(2) {
+  color: #2e2e2e;
+}
+
+.pic {
+  width: 243px;
+  position: absolute;
+  right: 80px;
+}
+
+.btn {
+  outline: none;
+  color: #ff406e;
+  background: transparent;
+  border-color: #ff406e;
+  width: 128px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  margin-left: -64px;
+}
+
+.btn2 {
+  outline: none;
+  color: #ff406e;
+  background: transparent;
+  border-color: #ff406e;
+  width: 128px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  position: relative;
+  left: 600px;
+  transform: translateX(-50%);
+}
+
+.Arrow {
+  font-size: 32px;
+  color: #ff406e;
+  margin-right: 36px;
+  cursor: pointer;
+}
+
+.defaultArrow {
+  font-size: 32px;
+  color: #8b8b8b;
+  margin-right: 36px;
+  cursor: pointer;
+}
+
+.textarea {
+  resize: none;
+  width: 1200px;
+  border: 1px solid;
+  outline: none;
+  border-radius: 32px;
+  border-color: #c4c4c4;
+  padding: 36px;
+}
+
+.count {
+  color: #6a6a6a;
+  font-size: small;
+  position: absolute;
+  right: 36px;
+}

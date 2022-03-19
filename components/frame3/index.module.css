@@ -1,0 +1,193 @@
+.frame {
+  background: #080808;
+  background-size: 100% 100%;
+  position: relative;
+  height: 100vh;
+}
+.box {
+  width: 449px;
+  margin: 0 auto;
+  position: relative;
+}
+.vector2 {
+  width: 122px;
+  position: absolute;
+}
+.font {
+  width: 72px;
+  color: #fff;
+  position: absolute;
+  left: 221px;
+}
+.font1 {
+  width: 228px;
+  left: 221px;
+  position: absolute;
+  color: #fff;
+}
+
+.mySprite {
+  position: absolute;
+  top: 10vh;
+  right: -15vh;
+  background-image: url("../../assets/线条动画/line.png");
+  width: 450px;
+  height: 450px;
+  animation: myAnimation 2.04s steps(1) infinite;
+}
+
+@keyframes myAnimation {
+  0% {
+    background-position: 0px 0px;
+  }
+  2.00% {
+    background-position: -450px 0px;
+  }
+  4.00% {
+    background-position: -900px 0px;
+  }
+  6.00% {
+    background-position: -1350px 0px;
+  }
+  8.00% {
+    background-position: -1800px 0px;
+  }
+  10.00% {
+    background-position: -2250px 0px;
+  }
+  12.00% {
+    background-position: -2700px 0px;
+  }
+  14.00% {
+    background-position: -3150px 0px;
+  }
+  16.00% {
+    background-position: -3600px 0px;
+  }
+  18.00% {
+    background-position: -4050px 0px;
+  }
+  20.00% {
+    background-position: -4500px 0px;
+  }
+  22.00% {
+    background-position: 0px -450px;
+  }
+  24.00% {
+    background-position: -450px -450px;
+  }
+  26.00% {
+    background-position: -900px -450px;
+  }
+  28.00% {
+    background-position: -1350px -450px;
+  }
+  30.00% {
+    background-position: -1800px -450px;
+  }
+  32.00% {
+    background-position: -2250px -450px;
+  }
+  34.00% {
+    background-position: -2700px -450px;
+  }
+  36.00% {
+    background-position: -3150px -450px;
+  }
+  38.00% {
+    background-position: -3600px -450px;
+  }
+  40.00% {
+    background-position: -4050px -450px;
+  }
+  42.00% {
+    background-position: -4500px -450px;
+  }
+  44.00% {
+    background-position: 0px -900px;
+  }
+  46.00% {
+    background-position: -450px -900px;
+  }
+  48.00% {
+    background-position: -900px -900px;
+  }
+  50.00% {
+    background-position: -1350px -900px;
+  }
+  52.00% {
+    background-position: -1800px -900px;
+  }
+  54.00% {
+    background-position: -2250px -900px;
+  }
+  56.00% {
+    background-position: -2700px -900px;
+  }
+  58.00% {
+    background-position: -3150px -900px;
+  }
+  60.00% {
+    background-position: -3600px -900px;
+  }
+  62.00% {
+    background-position: -4050px -900px;
+  }
+  64.00% {
+    background-position: -4500px -900px;
+  }
+  66.00% {
+    background-position: 0px -1350px;
+  }
+  68.00% {
+    background-position: -450px -1350px;
+  }
+  70.00% {
+    background-position: -900px -1350px;
+  }
+  72.00% {
+    background-position: -1350px -1350px;
+  }
+  74.00% {
+    background-position: -1800px -1350px;
+  }
+  76.00% {
+    background-position: -2250px -1350px;
+  }
+  78.00% {
+    background-position: -2700px -1350px;
+  }
+  80.00% {
+    background-position: -3150px -1350px;
+  }
+  82.00% {
+    background-position: -3600px -1350px;
+  }
+  84.00% {
+    background-position: -4050px -1350px;
+  }
+  86.00% {
+    background-position: -4500px -1350px;
+  }
+  88.00% {
+    background-position: 0px -1800px;
+  }
+  90.00% {
+    background-position: -450px -1800px;
+  }
+  92.00% {
+    background-position: -900px -1800px;
+  }
+  94.00% {
+    background-position: -1350px -1800px;
+  }
+  96.00% {
+    background-position: -1800px -1800px;
+  }
+  98.00% {
+    background-position: -2250px -1800px;
+  }
+  100.00% {
+    background-position: -2700px -1800px;
+  }
+}

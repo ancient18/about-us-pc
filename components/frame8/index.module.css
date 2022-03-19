@@ -1,0 +1,114 @@
+.frame {
+  width: 200vw;
+  height: 100vh;
+  position: relative;
+  transition: all 0.6s linear;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    linear-gradient(
+      284.24deg,
+      rgba(134, 137, 231, 0.2) -0.11%,
+      rgba(0, 0, 0, 0) 63.13%
+    ),
+    linear-gradient(
+      141.58deg,
+      rgba(244, 130, 130, 0.2) -30.92%,
+      rgba(244, 130, 130, 0) 74.94%
+    ),
+    linear-gradient(0deg, rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.9)), #e2e2e2;
+}
+.event_container {
+  display: flex;
+  align-items: center;
+}
+.event {
+  background-color: #1b1b1b;
+  width: 209px;
+  border-end-end-radius: 50px;
+  border-start-start-radius: 50px;
+  color: #aba5a5;
+  position: relative;
+  transition: all 0.6s linear;
+}
+.time {
+  text-align: right;
+  margin-right: 24px;
+  font-weight: 900;
+  font-family: DIN Black;
+}
+
+.article {
+  margin: 0 24px;
+}
+.range_box {
+  position: absolute;
+  left: 105px;
+  bottom: 0px;
+}
+.range {
+  background-color: #1b1b1b;
+  transition: all 0.6s linear;
+}
+.range:before,
+.range:after {
+  content: "";
+  position: absolute;
+  background-color: inherit;
+}
+.range,
+.range:before,
+.range:after {
+  width: 30px;
+  height: 30px;
+  border-top-right-radius: 30%;
+}
+.range {
+  transform: rotate(-60deg) skewX(-30deg) scale(1, 0.866);
+}
+.range:before {
+  transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707)
+    translate(0, -50%);
+}
+.range:after {
+  transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%);
+}
+.event.active,
+.range.active {
+  background-color: #fff;
+}
+.time.active,
+.article.active {
+  color: #000;
+}
+
+.line {
+  width: 2211px;
+  height: 1px;
+  background-color: #8172de;
+  position: absolute;
+}
+.line2 {
+  position: absolute;
+  width: 133px;
+  background: url(../../assets/img/frame8/Vector\ 5.png) center no-repeat;
+  transition: all 0.7s ease;
+  background-color: #000;
+  background-size: 100% 100%;
+  left: 0;
+}
+.square,
+.square2 {
+  opacity: 0.4;
+  width: 362px;
+  position: absolute;
+}
+.square {
+  left: 812px;
+}
+.square2 {
+  left: 2252px;
+}
+.heart {
+  position: absolute;
+  width: 33px;
+  left: 2178px;
+}

@@ -1,0 +1,76 @@
+.article {
+  width: 100vw;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.008) -7.97%,
+      rgba(0, 0, 0, 0) 59.21%
+    ),
+    #f2f2f2;
+}
+
+.article_container {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 0 180px;
+}
+
+.article_container img {
+  max-width: 100%;
+}
+
+.title {
+  color: #141414;
+}
+
+.info {
+  display: flex;
+  color: #6a6a6a;
+  font-size: 12px;
+  line-height: 20px;
+  align-items: center;
+}
+
+.info > div:nth-child(1) {
+  margin-right: 31px;
+  letter-spacing: 1px;
+}
+
+.info > div:nth-child(2) {
+  padding: 2px 8px;
+  border-radius: 16px;
+  background: #eaeaea;
+}
+
+.heart {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.see {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.share {
+  width: 16px;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.actBox {
+  display: flex;
+  float: right;
+}
+
+.actBox > div {
+  display: flex;
+  align-items: center;
+  margin-right: 19px;
+  cursor: pointer;
+}

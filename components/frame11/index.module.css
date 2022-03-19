@@ -1,0 +1,35 @@
+.frame {
+  position: relative;
+  background: #fafafa;
+  top: -5px;
+}
+.head {
+  background-color: #000;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  position: relative;
+}
+.y1,
+.y2 {
+  position: absolute;
+  width: 51px;
+}
+.y1 {
+  left: 120px;
+}
+.y2 {
+  right: 120px;
+  transform: rotate(180deg);
+}
+.flower {
+  position: absolute;
+  bottom: 0;
+  width: 64px;
+  left: 1166px;
+}
+.font {
+  position: absolute;
+  color: #fff;
+  width: 860px;
+  left: 219px;
+}

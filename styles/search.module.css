@@ -1,0 +1,109 @@
+.mask {
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.008) -7.97%,
+      rgba(0, 0, 0, 0) 59.21%
+    ),
+    #f9f9f9;
+  top: 0;
+  transition: transform 0.15s linear;
+  transform: translateY(-100%);
+  transform-origin: 50% 50%;
+  overflow: hidden auto;
+}
+.search_box {
+  width: 100%;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.008) -7.97%,
+      rgba(0, 0, 0, 0) 59.21%
+    ),
+    #f9f9f9;
+}
+.search_head {
+  position: relative;
+  width: 868px;
+  margin: 0 auto;
+  transition: transform linear 0.1s;
+}
+.search_ipt {
+  outline: none;
+  border: 0;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2e2e2e;
+  text-align: center;
+  width: 800px;
+  margin: 0 auto;
+  vertical-align: top;
+  background-color: transparent;
+}
+.search_line {
+  background-color: #6a6a6a;
+  border: 0 solid #6a6a6a;
+  margin: 0 34px;
+}
+.search_icon {
+  width: 25px;
+  position: absolute;
+  right: 34px;
+  cursor: pointer;
+  top: 3px;
+}
+.ipt_box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.close {
+  width: 18px;
+  position: absolute;
+  right: 240px;
+  cursor: pointer;
+}
+
+.noRes {
+  color: #6a6a6a;
+  flex-direction: column;
+  position: relative;
+}
+
+.back {
+  background: url(../assets/img/about/back.png) center no-repeat;
+  background-size: 100% 100%;
+  width: 580px;
+}
+
+.p_box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 120px;
+}
+
+.p_box > div {
+  margin-bottom: 24px;
+}
+
+.types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2e2e2e;
+  margin: 0;
+}
+
+.types div {
+  margin: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-weight: 400;
+}
+
+.types .select {
+  color: #ff406e;
+  font-weight: 700;
+}

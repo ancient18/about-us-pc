@@ -1,0 +1,110 @@
+.frame {
+  height: 100vh;
+  background: url(../../assets/img/frame1_back.png) center no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease, opacity 1s linear;
+  opacity: 1;
+}
+
+.zuobianyun {
+  position: absolute;
+  width: 593px;
+  left: -16px;
+}
+.logo {
+  width: 243px;
+}
+.frame1_nav div {
+  color: #fafafa;
+  margin: 0 30px;
+  font-size: 16px;
+}
+.leftWind {
+  position: absolute;
+  top: 0;
+  width: 593px;
+}
+.leftWind span {
+  width: 100% !important;
+}
+.diZuo {
+  width: 1174px;
+  height: 553px;
+  position: absolute;
+  left: -2px;
+}
+.quanquan {
+  width: 727px;
+  position: absolute;
+  left: 95px;
+}
+.juanjuan {
+  width: 1231px;
+  position: absolute;
+  left: 23px;
+  transition: transform 1s ease;
+}
+.ball {
+  position: absolute;
+  left: 75px;
+  width: 1045px;
+}
+.bolikuai {
+  position: absolute;
+  width: 1030px;
+  left: 23px;
+  transition: transform 1s ease;
+}
+.zuoxia {
+  position: absolute;
+  width: 120px;
+  left: 243px;
+  bottom: 0;
+}
+.zhongjian {
+  position: absolute;
+  width: 109.59px;
+  left: 715px;
+}
+.youshang {
+  position: absolute;
+  width: 161px;
+  left: 1005px;
+}
+.banzi {
+  position: absolute;
+  width: 518px;
+  left: 765px;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 1s linear, transform 1s ease;
+}
+.yun {
+  position: absolute;
+  width: 448px;
+  left: 1065px;
+  top: 1vh;
+}
+.yes {
+  position: absolute;
+  width: 167px;
+  left: 850px;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  cursor: pointer;
+  visibility: hidden;
+}
+.youxia {
+  position: absolute;
+  width: 257px;
+  left: 921px;
+  bottom: 0;
+}
+.ball2 {
+  position: absolute;
+  width: 113px;
+  left: 1185px;
+  bottom: 5vh;
+}

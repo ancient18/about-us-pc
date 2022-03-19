@@ -1,0 +1,21 @@
+.tab_box {
+  display: flex;
+  color: #141414;
+  z-index: 0;
+  position: relative;
+}
+.tab {
+  font-weight: 400 !important;
+  margin-right: 24px;
+  padding: 16px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.tab.select {
+  font-weight: 700 !important;
+  padding: 16px 24px;
+  background: #fff;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
+}
