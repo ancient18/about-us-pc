@@ -2,15 +2,13 @@ FROM node:alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json pnpm-lock.yaml ./
-RUN npm install -g pnpm
-RUN pnpm i --frozen-lockfile
-RUN npm install --frozen-lockfile
+RUN npm install -g pnpm && pnpm i --frozen-lockfile && npm install --frozen-lockfile
 
 FROM node:alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN pnpm build && pnpm install --production --ignore-scripts --prefer-offline
+RUN npm install -g pnpm && pnpm build && pnpm install --production --ignore-scripts --prefer-offline
 
 FROM node:alpine AS runner
 WORKDIR /app
