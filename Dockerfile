@@ -3,8 +3,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json pnpm-lock.yaml ./
 RUN npm install -g pnpm
-RUN npm i --frozen-lockfile
 RUN pnpm i --frozen-lockfile
+RUN npm install --frozen-lockfile
 
 FROM node:alpine AS builder
 WORKDIR /app
