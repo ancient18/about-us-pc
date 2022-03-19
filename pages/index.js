@@ -8,8 +8,8 @@ import arrow2 from "../assets/img/frame4/arrow.png";
 import yinhao from "../assets/img/about/Vector.png";
 import { useState } from "react";
 import Event from "../components/Event";
+import { getBannar, getCard, getEasyInfo } from "../api";
 const types = ["全部", "活动", "技术分享"];
-
 
 const Product = ({ picUrl, title, article, vh }) => (
   <div className={styles.product} style={{ height: 134 * vh }}>
@@ -29,10 +29,22 @@ const Product = ({ picUrl, title, article, vh }) => (
   </div>
 );
 
+export async function getStaticProps(ctx) {
+  const data = await Promise.all([getBannar(), getCard(), getEasyInfo()])
+  return {
+    props: {
+      state: {
+        bannar: data[0].figures,
+        card: data[1].cards,
+        easyInfo: data[2].essays
+      }
+    }
+  }
+}
+
 export default function About({ vh, state }) {
   const [type, setType] = useState("全部");
   const { bannar, easyInfo, card } = state
-
   const filerPicUrls = easyInfo.filter((item) => {
     if (type === "全部") return true;
     else if (type === "活动") return item.type === type;

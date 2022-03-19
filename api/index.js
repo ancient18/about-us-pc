@@ -1,4 +1,7 @@
-const baseUrl = "/api";
+const baseUrl = process.env.NODE_EVN === 'development' ?
+  "http://localhost:3000/api" :
+  'https://be-prod.redrock.cqupt.edu.cn/aboutus';
+
 
 const $ = async (url, options) => {
   const data = await fetch(baseUrl + url, options);

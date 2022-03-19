@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "../components/head";
 import "../styles/globals.css";
 import "slick-carousel/slick/slick.css";
@@ -11,9 +11,10 @@ import search from "../assets/img/search.png";
 import close from "../assets/img/close.png";
 import anime from "animejs";
 import debonce from "../util/debonce";
-import { getBannar, getCard, getEasyInfo, search as $search } from "../api";
+import { search as $search } from "../api";
 import Event from "../components/Event";
 const types = ["全部", "活动", "技术分享"];
+
 
 
 function MyApp({ Component, pageProps }) {
@@ -32,24 +33,11 @@ function MyApp({ Component, pageProps }) {
   const { route } = router;
   const app = useRef(null);
   const model = useRef(null);
-  const [state, setState] = useState({
-    bannar: [],
-    card: [],
-    easyInfo: []
-  })
 
   const [res, setRes] = useState([])
   const [type, setType] = useState('全部')
   const [hasSearch, setHasSearch] = useState(false)
-  useLayoutEffect(() => {
-    Promise.all([getBannar(), getCard(), getEasyInfo()]).then(res => {
-      setState({
-        bannar: res[0].figures,
-        card: res[1].cards,
-        easyInfo: res[2].essays
-      })
-    })
-  }, [])
+
 
   const $setVh = debonce((v) => {
     setVh(v);
@@ -108,8 +96,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <div id="app" ref={app}>
-        <Head vh={vh} toClose={toClose} showModel={showModel} state={state} app={app} hasSearch={hasSearch} />
-        <Component {...pageProps} vh={vh} state={state} />
+        <Head vh={vh} toClose={toClose} showModel={showModel} app={app} hasSearch={hasSearch} />
+        <Component {...pageProps} vh={vh} />
         <Footer vh={vh} />
       </div>
       <div

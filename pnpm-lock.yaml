@@ -26,6 +26,8 @@ dependencies:
   animejs: registry.npmmirror.com/animejs/3.2.1
   dayjs: registry.npmmirror.com/dayjs/1.11.0
   next: registry.npmmirror.com/next/12.0.10_1f052611af68d50dd06fb71ef47b7941
+  next-compose-plugins: registry.npmmirror.com/next-compose-plugins/2.2.1
+  next-transpile-modules: registry.npmmirror.com/next-transpile-modules/9.0.0
   react: registry.npmmirror.com/react/17.0.2
   react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
   react-markdown: registry.npmmirror.com/react-markdown/8.0.1_react@17.0.2
@@ -40,8 +42,6 @@ devDependencies:
   eslint-config-next: registry.npmmirror.com/eslint-config-next/12.0.10_eslint@8.8.0+next@12.0.10
   express: registry.npmmirror.com/express/4.17.3
   http-proxy-middleware: registry.npmmirror.com/http-proxy-middleware/2.0.4
-  next-compose-plugins: registry.npmmirror.com/next-compose-plugins/2.2.1
-  next-transpile-modules: registry.npmmirror.com/next-transpile-modules/9.0.0
   postcss-flexbugs-fixes: registry.npmmirror.com/postcss-flexbugs-fixes/5.0.2
   postcss-preset-env: registry.npmmirror.com/postcss-preset-env/7.3.1
   postcss-px-to-viewport: registry.npmmirror.com/postcss-px-to-viewport/1.1.1
@@ -1441,7 +1441,7 @@ packages:
     dependencies:
       graceful-fs: registry.npmmirror.com/graceful-fs/4.2.9
       tapable: registry.npmmirror.com/tapable/2.2.1
-    dev: true
+    dev: false
 
   registry.npmmirror.com/enquire.js/2.1.6:
     resolution: {integrity: sha512-/KujNpO+PT63F7Hlpu4h3pE3TokKRHN26JYmQpPyjkRD/N57R7bPDNojMXdi7uveAKjYB7yQnartCxZnFWr0Xw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/enquire.js/-/enquire.js-2.1.6.tgz}
@@ -1493,7 +1493,6 @@ packages:
     name: escalade
     version: 3.1.1
     engines: {node: '>=6'}
-    dev: true
 
   registry.npmmirror.com/escape-html/1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/escape-html/-/escape-html-1.0.3.tgz}
@@ -2120,7 +2119,7 @@ packages:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/graceful-fs/-/graceful-fs-4.2.9.tgz}
     name: graceful-fs
     version: 4.2.9
-    dev: true
+    dev: false
 
   registry.npmmirror.com/has-bigints/1.0.1:
     resolution: {integrity: sha512-LSBS2LjbNBTf6287JEbEzvJgftkF5qFkmCo9hDRpAzKhUOlJ+hx8dd4USs00SgsUNwc4617J9ki5YtEClM2ffA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/has-bigints/-/has-bigints-1.0.1.tgz}
@@ -3050,7 +3049,7 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz}
     name: next-compose-plugins
     version: 2.2.1
-    dev: true
+    dev: false
 
   registry.npmmirror.com/next-transpile-modules/9.0.0:
     resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/next-transpile-modules/-/next-transpile-modules-9.0.0.tgz}
@@ -3059,7 +3058,7 @@ packages:
     dependencies:
       enhanced-resolve: registry.npmmirror.com/enhanced-resolve/5.9.2
       escalade: registry.npmmirror.com/escalade/3.1.1
-    dev: true
+    dev: false
 
   registry.npmmirror.com/next/12.0.10_1f052611af68d50dd06fb71ef47b7941:
     resolution: {integrity: sha512-1y3PpGzpb/EZzz1jgne+JfZXKAVJUjYXwxzrADf/LWN+8yi9o79vMLXpW3mevvCHkEF2sBnIdjzNn16TJrINUw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/next/-/next-12.0.10.tgz}
@@ -4287,7 +4286,7 @@ packages:
     name: tapable
     version: 2.2.1
     engines: {node: '>=6'}
-    dev: true
+    dev: false
 
   registry.npmmirror.com/text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/text-table/-/text-table-0.2.0.tgz}
