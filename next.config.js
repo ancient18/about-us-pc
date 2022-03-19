@@ -1,6 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')(['react-syntax-highlighter']);
-
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = withPlugins([withTM], {
   reactStrictMode: true,
   javascriptEnabled: true,
