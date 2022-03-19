@@ -13,6 +13,9 @@ import anime from "animejs";
 import debonce from "../util/debonce";
 import { search as $search } from "../api";
 import Event from "../components/Event";
+
+import SEOHead from "next/head";
+
 const types = ["全部", "活动", "技术分享"];
 
 
@@ -96,6 +99,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <div id="app" ref={app}>
+        <SEOHead>
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+          <meta name="keywords" content="红岩网校，redrock，红岩网校官网" />
+        </SEOHead>
         <Head vh={vh} toClose={toClose} showModel={showModel} app={app} hasSearch={hasSearch} />
         <Component {...pageProps} vh={vh} />
         <Footer vh={vh} />
