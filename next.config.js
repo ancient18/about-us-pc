@@ -10,6 +10,6 @@ module.exports = withPlugins([withTM], {
   images: {
     domains: ["cdn.redrock.team", 'redrock.feishu.cn'],
   },
-  basePath: isProd ? '/aboutus-pc' : '',
+  assetPrefix: isProd ? 'https://fe-prod.redrock.cqupt.edu.cn/aboutus-pc' : '',
 });
 
