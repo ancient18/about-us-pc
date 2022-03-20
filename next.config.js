@@ -7,7 +7,9 @@ module.exports = withPlugins([withTM], {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
+  images: !isProd ? {
+    domains: ["cdn.redrock.team", 'redrock.feishu.cn'],
+  } : {
     domains: ["cdn.redrock.team", 'redrock.feishu.cn'],
     loader: 'imgix',
     path: ''
