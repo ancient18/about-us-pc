@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import Image from "next/image";
 import square from "../../assets/img/frame10/square.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import data from "../../data/data.json";
 import arrow from "../../assets/img/frame4/arrow.png";
 
@@ -107,6 +107,9 @@ export default function Frame10({ vh }) {
   const [select, setSelect] = useState(yearArr[yearArr.length / 2]);
   const [member, setMember] = useState([]);
   const [offset, setOffset] = useState(0);
+
+  const canvasRef = useRef(null);
+  const hoverRef = useRef(null);
   useEffect(() => {
     body = document.querySelector("body");
     canvas = document.querySelector("#canvas");
@@ -125,6 +128,7 @@ export default function Frame10({ vh }) {
   }, [member]);
 
   useEffect(() => {
+
     if (canvas && canvas2 && body) {
       let ctx = canvas.getContext("2d");
       let ctx2 = canvas2.getContext("2d");
@@ -168,9 +172,57 @@ export default function Frame10({ vh }) {
             width,
             y,
             height,
+            l
           });
+
         }
       });
+
+      console.log(boundary);
+
+      // 判断鼠标是否已经进入文本区域位置，让鼠标进入区域只出现一次动画
+      let moveFlag = false;
+
+
+      canvasRef.current.addEventListener("mousemove", (e) => {
+        // 动画盒子是否可见
+        let visible = false
+        boundary.map((item) => {
+          const { x, width, y, height, l } = item;
+          if (e.offsetX < x + width && e.offsetX > x && e.offsetY < y && e.offsetY > y - height && !moveFlag) {
+            moveFlag = true;
+            visible = true;
+            hoverRef.current.style.left = `${x + width / 2 - hoverRef.current.offsetWidth / 2}px`;
+            hoverRef.current.style.top = `${y - height / 2 - hoverRef.current.offsetHeight - 10}px`;
+
+            // 储存姓名
+            const nameArr = [];
+            member.map((item) => {
+              if (item.location.includes(l)) {
+                hoverRef.current.innerHTML = `<h4>${item.location}</h1>`;
+                nameArr.push(item.name)
+              }
+            })
+
+            nameArr.map((name) => {
+              hoverRef.current.innerHTML +=
+                `<span>${name}</span>&nbsp;`;
+            })
+
+          } else if (!(e.offsetX < x + width && e.offsetX > x && e.offsetY < y && e.offsetY > y - height)) {
+            moveFlag = false;
+          }
+        })
+
+        if (visible) {
+          hoverRef.current.style.display = "block"
+        } else {
+          hoverRef.current.style.display = "none"
+        }
+
+
+
+      })
       draw = true;
     }
   }, [member]);
@@ -201,12 +253,16 @@ export default function Frame10({ vh }) {
     }, 100);
   }, [select]);
 
+
+
+
   return (
     <div className={styles.frame}>
       <div className={styles.square} style={{ top: 136 * vh }}>
         <Image src={square} />
       </div>
-      <canvas id="canvas" className={styles.canvas} height={600 * vh}></canvas>
+      <canvas id="canvas" className={styles.canvas} height={600 * vh} ref={canvasRef} ></canvas>
+      <div className={styles.hover} ref={hoverRef}></div>
       <div
         className={styles.arrow1}
         style={{ bottom: 80 * vh, height: 34 * vh }}
@@ -230,10 +286,10 @@ export default function Frame10({ vh }) {
                 index === selectIndex
                   ? styles.font3 + " font2 " + styles.selector
                   : index == selectIndex - 1 || index == selectIndex + 1
-                  ? styles.font2 + " font4 " + styles.selector
-                  : index == selectIndex - 2 || index == selectIndex + 2
-                  ? styles.font1 + " font1 " + styles.selector
-                  : styles.font1 + " font1 " + styles.selector + " cannot_see"
+                    ? styles.font2 + " font4 " + styles.selector
+                    : index == selectIndex - 2 || index == selectIndex + 2
+                      ? styles.font1 + " font1 " + styles.selector
+                      : styles.font1 + " font1 " + styles.selector + " cannot_see"
               }
               style={{ transform: `translateX(${offset * -1}px)` }}
               key={index}
