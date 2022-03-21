@@ -199,7 +199,7 @@ export default function Frame10({ vh }) {
             const nameArr = [];
             member.map((item) => {
               if (item.location.includes(l)) {
-                hoverRef.current.innerHTML = `<h4>${item.location}</h1>`;
+                hoverRef.current.innerHTML = `<h3>${item.location}</h3>`;
                 nameArr.push(item.name)
               }
             })
