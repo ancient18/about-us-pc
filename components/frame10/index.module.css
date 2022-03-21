@@ -88,8 +88,9 @@
   height: 0;
   content: "";
   position: absolute;
-  left: 198px;
+  left: 200px;
   top: 120px;
+  margin-left: -5px;
   border-left: solid 10px transparent;
   border-top: solid 10px rgb(59, 57, 58, 0.5);
   border-right: solid 10px transparent;
