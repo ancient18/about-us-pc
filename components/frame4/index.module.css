@@ -9,6 +9,7 @@
   overflow: hidden;
   width: 500vw;
   position: relative;
+  transition: all 0.3s linear;
 }
 .p1 {
   width: 100vw;
@@ -203,7 +204,8 @@
   left: 73px;
 }
 .producet_nav {
-  position: absolute;
+  position: fixed;
+  top: 285vh !important;
   width: 207px;
   left: 120px;
   display: flex;

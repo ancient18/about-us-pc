@@ -12,6 +12,7 @@ module.exports = {
     },
     "postcss-px-to-viewport": {
       viewportWidth: 1440,
+      selectorBlackList: ['.mySprite'],
     },
   },
 };

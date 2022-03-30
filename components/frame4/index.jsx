@@ -10,10 +10,9 @@ import p3 from "../../assets/img/frame4/3.png";
 import p4 from "../../assets/img/frame4/4.png";
 import xingyun from "../../assets/img/frame4/xingyun.png";
 import xingyun2 from "../../assets/img/frame4/xingyun2.png";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 export default function Frame4({ vh }) {
   const [choose, setChoose] = useState(0);
-
   const createNav = () => {
     const navs = [];
     for (let i = 0; i < 5; i++) {
@@ -29,8 +28,47 @@ export default function Frame4({ vh }) {
     }
     return navs;
   };
+
+  let initX, lastX, initLeft;
+  let isMouseDown = false;
+
+  const frame4Ref = useRef(null);
+  const mouseDown = (e) => {
+    if (e.target.tagName !== "IMG") {
+      initX = e.clientX;
+      isMouseDown = true;
+    }
+  }
+
+  const mouseMove = (e) => {
+    initLeft = frame4Ref.current.style.left;
+    if (isMouseDown) {
+      frame4Ref.current.style.left = e.clientX - initX + "px";
+    }
+
+  }
+
+  const mouseUp = (e) => {
+    if (isMouseDown) {
+      lastX = e.clientX;
+
+      if (lastX - initX > 300 && choose > 0) {
+        setChoose(choose - 1);
+      } else if (initX - lastX > 300 && choose < 4) {
+        setChoose(choose + 1);
+      }
+      setTimeout(() => {
+        frame4Ref.current.style.left = "0px"
+      })
+
+      isMouseDown = false;
+    }
+
+  }
+
+
   return (
-    <div className={styles.frame4}>
+    <div className={styles.frame4} onMouseDown={mouseDown} onMouseUp={mouseUp} onMouseMove={mouseMove} ref={frame4Ref}>
       <div
         className={styles.p1}
         style={{

@@ -6,21 +6,15 @@ import vector from "../../assets/img/frame2/Vector 1.png";
 import styles from "./index.module.css";
 import { useEffect, useRef } from "react";
 export default function Frame2({ vh }) {
-  useEffect(() => {
-    const container = $body.current.parentNode.parentNode;
-    const animation = new MutationObserver((mu, ob) => {
-      console.log(0);
-      console.log(animation);
-    });
-
-    animation.observe(container, {
-      attributes: true,
-      childList: true,
-      subtree: true,
-    });
-  });
 
   const $body = useRef(null);
+
+  useEffect(() => {
+    $body.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty('width', '100%', 'important');
+      item.style.setProperty('height', '100%', 'important');
+    })
+  })
 
   return (
     <div className={styles.frame} ref={$body}>
@@ -61,7 +55,7 @@ export default function Frame2({ vh }) {
         <div
           className={styles.font2}
           style={{
-            top: 192 * vh,
+            top: 172 * vh,
             height: 24 * vh,
           }}
         >

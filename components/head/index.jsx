@@ -9,7 +9,8 @@ import search from "../../assets/img/search.png";
 import search1 from "../../assets/img/search2.png";
 
 let open = true;
-export default function Head({ vh, showModel, toClose, hasSearch }) {
+export default function Head({ vh, showModel }) {
+
   const router = useRouter();
   const [mode, setMode] = useState("default");
   function whell(e) {
@@ -32,6 +33,7 @@ export default function Head({ vh, showModel, toClose, hasSearch }) {
     showModel();
   };
 
+
   useEffect(() => {
     if (router.route === "/about-us") document.onmousewheel = whell;
     else document.onmousewheel = null;
@@ -39,7 +41,6 @@ export default function Head({ vh, showModel, toClose, hasSearch }) {
   if (router.route === "/about-us")
     return (
       <div
-        onClick={toClose}
         className={styles.frame1_bar + " flex-center-center"}
         style={{
           height: 72 * vh,
@@ -50,6 +51,7 @@ export default function Head({ vh, showModel, toClose, hasSearch }) {
         onMouseOver={() => {
           if (mode === "default") {
             setMode("over");
+            console.log("over");
           }
         }}
         onMouseLeave={() => {
@@ -70,18 +72,14 @@ export default function Head({ vh, showModel, toClose, hasSearch }) {
             <div>加入我们</div>
           </Link>
           <div className={styles.search} onClick={handleSearch}>
-            <Image src={mode !== "default" ? search : search1} />
+            <Image src={mode === "default" ? search1 : search} />
           </div>
         </div>
       </div>
     );
   return (
     <div
-      onClick={() => {
-        if (hasSearch) {
-          toClose();
-        }
-      }}
+
       className={styles.frame1_bar + " flex-center-center"}
       style={{
         height: 72 * vh,

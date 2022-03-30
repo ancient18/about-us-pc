@@ -69,7 +69,8 @@
     translate(0, -50%);
 }
 .range:after {
-  transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%);
+  /* transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%); */
+  transform: rotate(155deg) skewY(2deg) scale(1, 1.414) translate(50%);
 }
 .event.active,
 .range.active {
@@ -98,7 +99,9 @@
 .square,
 .square2 {
   opacity: 0.4;
-  width: 362px;
+  height: 343px;
+  width: 361.7850036621094px;
+
   position: absolute;
 }
 .square {

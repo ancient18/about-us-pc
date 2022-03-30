@@ -70,7 +70,7 @@ let getCoordinate = (vh) => {
 // 碰撞
 let checkIsSave = (x, y, width, height, vh) => {
   let save = true;
-  if (x + width > body.clientWidth - 100 || y + height > 600 * vh - 50) {
+  if (x + width > body.clientWidth - 150 || y + height > 600 * vh - 50) {
     return false;
   }
   let c1 = {
@@ -110,6 +110,7 @@ export default function Frame10({ vh }) {
 
   const canvasRef = useRef(null);
   const hoverRef = useRef(null);
+  const $square = useRef(null);
   useEffect(() => {
     body = document.querySelector("body");
     canvas = document.querySelector("#canvas");
@@ -118,6 +119,10 @@ export default function Frame10({ vh }) {
     ctx2 = canvas2.getContext("2d");
     canvas.width = body.clientWidth;
     canvas2.width = body.clientWidth;
+    $square.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty('width', '100%', 'important');
+      item.style.setProperty('height', '100%', 'important');
+    })
   }, []);
 
   useEffect(() => {
@@ -147,7 +152,6 @@ export default function Frame10({ vh }) {
 
         if (!location.has(l)) {
           location.add(l);
-
           let width, height, x, y, res;
 
           res = getCoordinate(vh);
@@ -178,8 +182,6 @@ export default function Frame10({ vh }) {
         }
       });
 
-      console.log(boundary);
-
       // 判断鼠标是否已经进入文本区域位置，让鼠标进入区域只出现一次动画
       let moveFlag = false;
 
@@ -195,19 +197,23 @@ export default function Frame10({ vh }) {
             hoverRef.current.style.left = `${x + width / 2 - hoverRef.current.offsetWidth / 2}px`;
             hoverRef.current.style.top = `${y - height / 2 - hoverRef.current.offsetHeight - 10}px`;
 
+
             // 储存姓名
             const nameArr = [];
             member.map((item) => {
               if (item.location.includes(l)) {
-                hoverRef.current.innerHTML = `<h3>${item.location}</h3>`;
+                hoverRef.current.innerHTML = `<h3 style="margin-bottom:10px">${item.location}</h3>`;
                 nameArr.push(item.name)
               }
             })
 
             nameArr.map((name) => {
               hoverRef.current.innerHTML +=
-                `<span>${name}</span>&nbsp;`;
+                `<span>${name}</span>&nbsp;&nbsp;&nbsp;`;
             })
+
+            // hoverRef.current.style.setProperty('height', '100%', 'important');
+            document.styleSheets[0].insertRule('.hover::after{left:0px}', 0)
 
           } else if (!(e.offsetX < x + width && e.offsetX > x && e.offsetY < y && e.offsetY > y - height)) {
             moveFlag = false;
@@ -256,9 +262,10 @@ export default function Frame10({ vh }) {
 
 
 
+
   return (
     <div className={styles.frame}>
-      <div className={styles.square} style={{ top: 136 * vh }}>
+      <div className={styles.square} style={{ top: 136 * vh }} ref={$square}>
         <Image src={square} />
       </div>
       <canvas id="canvas" className={styles.canvas} height={600 * vh} ref={canvasRef} ></canvas>
@@ -278,6 +285,11 @@ export default function Frame10({ vh }) {
         className={styles.year_selector}
         style={{ bottom: 80 * vh, height: 34 * vh }}
         id="year_selector"
+        onClick={(e) => {
+          if (!isNaN(Number(e.target.innerHTML))) {
+            setSelect(Number(e.target.innerHTML));
+          }
+        }}
       >
         {yearArr.map((item, index) => {
           return (

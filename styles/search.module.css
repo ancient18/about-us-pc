@@ -9,7 +9,7 @@
     ),
     #f9f9f9;
   top: 0;
-  transition: transform 0.15s linear;
+  transition: 0.15s linear;
   transform: translateY(-100%);
   transform-origin: 50% 50%;
   overflow: hidden auto;

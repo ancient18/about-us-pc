@@ -1,7 +1,7 @@
 .frame {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   height: 100vh;
   width: 100vw;
   padding-left: 120px;
@@ -18,20 +18,35 @@
     ),
     linear-gradient(0deg, rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.9)), #e2e2e2;
 }
+
+.container{
+  width: 200vw;
+  display:flex;
+  margin-top:50px;
+}
+
+
 .square {
   width: 283px;
+  height: 205px;
   background: #eff6f9;
   border-radius: 32px;
   margin-right: 48px;
+  cursor: pointer;
+  /* max-height: 600px !important; */
+  /* min-height: 205px !important; */
 }
+
 .fragment1 {
   width: 207px;
+  /* height: 205px !important; */
   margin-right: 48px;
   background-color: #1b1b1b;
   border-radius: 32px;
 }
 .fragment2 {
   width: 118px;
+  height: 205px;
   background-color: #1b1b1b;
   border-radius: 32px;
   margin-right: 84px;
@@ -42,21 +57,25 @@
 }
 .pic1 {
   width: 76px;
-  margin-left: 42px;
+  margin-left: 38px;
 }
 .title2 {
-  margin-left: 48px;
+  margin-left: 38px;
+  margin-right: 38px;
 }
 .pic2 {
   width: 155px;
   margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 2vh !important;
+  margin-bottom: 1vh !important;
 }
 .title3 {
-  margin-left: 42px;
+  margin-left: 38px;
+  margin-right: 38px;
 }
 
 .square3 {
-  position: absolute;
   top: 7vh;
   left: -22vh;
   bottom: 0;
@@ -68,4 +87,20 @@
   display: block;
   width: 50vh;
   height: 25vh;
+}
+
+.font {
+  height: 72px;
+  width: 337px;
+  font-family: PingFang SC;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 38px;
+  margin-right: 38px;
+  margin-bottom: 38px;
 }

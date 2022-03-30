@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import vector4 from "../../assets/img/frame7/Vector 43.png";
 import Image from "next/image";
-import square from "../../assets/网页动效/无限循环.png";
+import square from "../../assets/网页动效/无限循环.webp";
 import { useEffect, useRef } from "react";
 
 export default function Frame7({ vh }) {

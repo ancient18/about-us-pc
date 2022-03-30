@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import square from "../../assets/img/frame6/square.png";
 import heart from "../../assets/img/frame8/Vector.png";
@@ -53,7 +53,7 @@ const Event = ({
       minHeight: 198 * vh,
       marginTop: 243 * vh,
       transform: `translateY(${select === index ? 316 - 243 : 0}px)`,
-      marginLeft: marginLeft * vw,
+      // marginLeft: `${marginLeft * 1/14.4}vw`,
     }}
     onClick={() => {
       setSelect(index);
@@ -89,12 +89,25 @@ const Event = ({
 export default function Frame8({ vh }) {
   const [vw, setVw] = useState(0);
   const [select, setSelect] = useState(0);
+  const $frame = useRef(null);
 
   useEffect(() => {
     const body = document.querySelector("body");
-    let $vw = 1440 / body.clientWidth;
+    let $vw = body.clientWidth / 100;
+    $frame.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty('width', '100%', 'important');
+      item.style.setProperty('height', '100%', 'important');
+    })
+    // let $vw = 1/14.4;
     setVw($vw);
   }, []);
+
+  useEffect(() => {
+    const events = [...document.querySelectorAll(".event")];
+    events.map((item, index) => {
+      item.style.marginLeft = `${data[index].marginLeft * 1 / 14.4}vw`
+    })
+  }, [vw])
 
   useEffect(() => {
     if (!vh || !vw) {
@@ -105,11 +118,12 @@ export default function Frame8({ vh }) {
       const events = [...document.querySelectorAll(".event")];
       // 弧形,容器的偏移量
       offsetLeftArr = events.map((item, index) => {
-        let o = data[index].marginLeft * vw + item.clientWidth;
+        let o = data[index].marginLeft * 1 / 14.4 + item.clientWidth / vw;
+
         space.push(o);
         last += o;
         offset.push(last);
-        return last - 170 * vw;
+        return last - 170 * 1 / 14.4;
       });
       // 强制刷新一次
       setSelect(1);
@@ -120,8 +134,9 @@ export default function Frame8({ vh }) {
     <div
       className={styles.frame}
       style={{
-        transform: `translateX(-${select > 1 ? offset[select - 2] : 0}px)`,
+        transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
       }}
+      ref={$frame}
     >
       <div className={styles.square} style={{ top: 153 * vh }}>
         <Image src={square} />
@@ -151,9 +166,9 @@ export default function Frame8({ vh }) {
       <div
         className={styles.line2}
         style={{
-          top: 570.5 * vh,
-          height: 24 * vh,
-          transform: `translateX(${offsetLeftArr[select] || 0}px)`,
+          top: `${570.5 * vh}px`,
+          height: `${24 * vh}px`,
+          transform: `translateX(${offsetLeftArr[select] || 0}vw)`,
         }}
       ></div>
     </div>

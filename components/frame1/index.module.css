@@ -6,15 +6,23 @@
   overflow: hidden;
   transition: transform 0.5s ease, opacity 1s linear;
   opacity: 1;
+ 
 }
 
 .zuobianyun {
   position: absolute;
-  width: 593px;
+  height: 673px;
+  width: 593.3026123046875px;
   left: -16px;
+  top: 39.7px;
+  border-radius: 0px;
 }
 .logo {
-  width: 243px;
+  height: 493.60919189453125px;
+  width: 1045px;
+  left: 75px;
+  top: 141.7px;
+  border-radius: 0px;
 }
 .frame1_nav div {
   color: #fafafa;
@@ -30,81 +38,122 @@
   width: 100% !important;
 }
 .diZuo {
-  width: 1174px;
-  height: 553px;
   position: absolute;
+  height: 553.1776123046875px;
+  width: 1174.5902099609375px;
   left: -2px;
+  top: 153.7px;
+  transition: transform 1s ease;
+  border-radius: 0px;
 }
 .quanquan {
-  width: 727px;
   position: absolute;
+  height: 360.11358642578125px;
+  width: 727.076171875px;
   left: 95px;
+  top: 230.59px;
+  transition: transform 1s ease;
+  border-radius: 0px;
 }
 .juanjuan {
-  width: 1231px;
   position: absolute;
+  height: 621px;
+  width: 1231.626953125px;
   left: 23px;
+  top: 176.7px;
+  border-radius: 0px;
+
   transition: transform 1s ease;
 }
 .ball {
   position: absolute;
-  left: 75px;
-  width: 1045px;
+  height: 456.11679077148438px;
+  width: 983.61203002929688px;
+  left: 113px;
+  top: 94.7px !important;
+  border-radius: 0px;
+  transition: transform 1s ease;
 }
 .bolikuai {
   position: absolute;
+  height: 486.6666564941406px;
   width: 1030px;
   left: 23px;
+  top: 220.7px;
+  border-radius: 0px;
   transition: transform 1s ease;
 }
 .zuoxia {
   position: absolute;
+  height: 124.69055938720703px;
   width: 120px;
   left: 243px;
-  bottom: 0;
+  top: 691.7px;
+  border-radius: 0px;
+  bottom: 10px;
 }
 .zhongjian {
   position: absolute;
-  width: 109.59px;
-  left: 715px;
+  height: 110.8541259765625px;
+  width: 109.59203338623047px;
+  left: 856.592041015625px;
+  top: 327.7px;
+
+  border-radius: 0px;
 }
 .youshang {
   position: absolute;
+  height: 162.8541259765625px;
   width: 161px;
-  left: 1005px;
+  left: 1046px;
+  top: 141.7px;
+  border-radius: 0px;
 }
 .banzi {
   position: absolute;
+  height: 147.769287109375px;
   width: 518px;
-  left: 765px;
+  left: 802px;
+  top: 378.32px;
+  border-radius: 0px;
   opacity: 0;
   transform: translateY(-30px);
   transition: opacity 1s linear, transform 1s ease;
 }
 .yun {
   position: absolute;
+  height: 444.71661376953125px;
   width: 448px;
-  left: 1065px;
-  top: 1vh;
+  left: 991px;
+  top: 94.7px;
+  border-radius: 0px;
 }
 .yes {
   position: absolute;
-  width: 167px;
-  left: 850px;
+  height: 116.7679214477539px;
+  width: 167.2621612548828px;
+  left: 920px;
+  top: 498.7px;
+  border-radius: 0px;
   opacity: 0;
   transition: opacity 0.2s linear;
+  transition: transform 1s ease;
   cursor: pointer;
   visibility: hidden;
 }
 .youxia {
   position: absolute;
+  height: 235.55142211914062px;
   width: 257px;
-  left: 921px;
-  bottom: 0;
+  left: 991px;
+  top: 578.7px;
+  border-radius: 0px;
 }
 .ball2 {
   position: absolute;
-  width: 113px;
-  left: 1185px;
-  bottom: 5vh;
+  height: 106.11679077148438px;
+  width: 113.61203002929688px;
+  left: 1255px;
+  top: 659.7px;
+  border-radius: 0px;
 }

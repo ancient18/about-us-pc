@@ -3,6 +3,22 @@
   background-size: 100% 100%;
   position: relative;
   height: 100vh;
+
+  border: 1.57px solid;
+
+  border-image-source: linear-gradient(
+      189.02deg,
+      rgba(255, 173, 126, 0.2) 72.89%,
+      rgba(255, 193, 135, 0) 97.41%
+    ),
+    radial-gradient(
+        128.3% 43.77% at 21.68% 85.79%,
+        #ff8585 0.1%,
+        #ffdead 42.29%,
+        rgba(255, 196, 141, 0) 98.61%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    linear-gradient(148.69deg, #5a61ff 22.13%, #ffaecb 101.82%);
 }
 .box {
   width: 449px;
@@ -28,11 +44,12 @@
 
 .mySprite {
   position: absolute;
-  top: 10vh;
-  right: -15vh;
+  top: 10vh !important;
+  right: -10vw;
   background-image: url("../../assets/线条动画/line.png");
+  background-repeat: no-repeat;
   width: 450px;
-  height: 450px;
+  height: 450px !important;
   animation: myAnimation 2.04s steps(1) infinite;
 }
 

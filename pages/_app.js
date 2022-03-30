@@ -18,18 +18,15 @@ import SEOHead from "next/head";
 
 const types = ["全部", "活动", "技术分享"];
 
-
-
 function MyApp({ Component, pageProps }) {
-
-  const ipt = useRef(null)
+  const ipt = useRef(null);
 
   useEffect(() => {
-    const atr = localStorage.getItem('articleArr')
+    const atr = localStorage.getItem("articleArr");
     if (!atr) {
-      localStorage.setItem('articleArr', JSON.stringify([]))
+      localStorage.setItem("articleArr", JSON.stringify([]));
     }
-  }, [])
+  }, []);
 
   const [vh, setVh] = useState(0);
   const router = useRouter();
@@ -37,10 +34,9 @@ function MyApp({ Component, pageProps }) {
   const app = useRef(null);
   const model = useRef(null);
 
-  const [res, setRes] = useState([])
-  const [type, setType] = useState('全部')
-  const [hasSearch, setHasSearch] = useState(false)
-
+  const [res, setRes] = useState([]);
+  const [type, setType] = useState("全部");
+  const [hasSearch, setHasSearch] = useState(false);
 
   const $setVh = debonce((v) => {
     setVh(v);
@@ -62,30 +58,37 @@ function MyApp({ Component, pageProps }) {
 
   const showModel = () => {
     if (!model) return;
-    app.current.style.overflow = 'hidden'
+    app.current.style.overflow = "hidden";
     model.current.style.transform = `translateY(${72 * vh}px)`;
+    console.log(model.current);
   };
 
   const toClose = () => {
+    console.log("toClose");
     if (!model) return;
-    setHasSearch(false)
-    setRes([])
-    ipt.current.value = ''
-    app.current.style.overflow = 'hidden auto'
+    setHasSearch(false);
+    setRes([]);
+    ipt.current.value = "";
+    if (app.current.style.overflow !== "hidden") {
+      app.current.style.overflow = "hidden auto";
+    }
+
     anime({
       targets: model.current,
-      rotateY: "150deg",
-      duration: 500,
-      complete: function () {
-        anime({
-          targets: model.current,
-          translateY: "-100%",
-          duration: 300,
-          complete: function () {
-            model.current.style.transform = "translateY(-100%)";
-          },
-        });
-      },
+      // rotateY: "150deg",
+      // duration: 500,
+      translateY: "-100%",
+      duration: 300,
+      // complete: function () {
+      //   anime({
+      //     targets: model.current,
+      //     translateY: "-100%",
+      //     duration: 300,
+      //     complete: function () {
+      //       model.current.style.transform = "translateY(-100%)";
+      //     },
+      //   });
+      // },
     });
   };
 
@@ -95,15 +98,17 @@ function MyApp({ Component, pageProps }) {
     else return item.type !== "活动";
   });
 
-
   return (
     <>
       <div id="app" ref={app}>
         <SEOHead>
-          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content="upgrade-insecure-requests"
+          />
           <meta name="keywords" content="红岩网校，redrock，红岩网校官网" />
         </SEOHead>
-        <Head vh={vh} toClose={toClose} showModel={showModel} app={app} hasSearch={hasSearch} />
+        <Head vh={vh} showModel={showModel} app={app} hasSearch={hasSearch} />
         <Component {...pageProps} vh={vh} />
         <Footer vh={vh} />
       </div>
@@ -115,7 +120,10 @@ function MyApp({ Component, pageProps }) {
         <div className={styles.search_box} style={{ paddingTop: 70 * vh }}>
           <div
             className={styles.search_head}
-            style={{ marginBottom: (filerPicUrls.lenght ? 80 : 0) * vh, transform: `translateY(${res.length ? -50 * vh : 120 * vh}px)` }}
+            style={{
+              marginBottom: (filerPicUrls.lenght ? 80 : 0) * vh,
+              transform: `translateY(${res.length ? -50 * vh : 120 * vh}px)`,
+            }}
           >
             <div className={styles.ipt_box}>
               <input
@@ -124,12 +132,15 @@ function MyApp({ Component, pageProps }) {
                 style={{ paddingBottom: 20 * vh }}
                 ref={ipt}
               />
-              <div className={styles.search_icon + " flex-center-center"} onClick={() => {
-                setHasSearch(true)
-                $search(ipt.current.value).then(res => {
-                  setRes(res.essays)
-                })
-              }}>
+              <div
+                className={styles.search_icon + " flex-center-center"}
+                onClick={() => {
+                  setHasSearch(true);
+                  $search(ipt.current.value).then((res) => {
+                    setRes(res.essays);
+                  });
+                }}
+              >
                 <Image src={search} />
               </div>
             </div>
@@ -137,45 +148,63 @@ function MyApp({ Component, pageProps }) {
               className={styles.search_line}
               style={{ borderBottomWidth: 1.5 * vh }}
             ></div>
-
           </div>
           <div className={styles.search_res}>
-            {(hasSearch && !filerPicUrls.length) ? <div style={{ top: 170 * vh }} className={styles.noRes + ' font4 flex-center-center'}>
-              <div> ヽ༼⊙_⊙༽ﾉ</div>
-              <div>没有找到相关内容欸</div>
-            </div> :
-              <>{hasSearch && filerPicUrls.length ? <div
-                className={styles.types + " font2"}
-                style={{ height: 34 * vh, marginBottom: 48 * vh }}
+            {hasSearch && !filerPicUrls.length ? (
+              <div
+                style={{ top: 170 * vh }}
+                className={styles.noRes + " font4 flex-center-center"}
               >
-                {types.map((item, i) => {
-                  return (
-                    <div
-                      className={item === type ? styles.select : ""}
-                      key={i}
-                      onClick={() => setType(item)}
-                    >
-                      {item}
-                    </div>
-                  );
-                })}
-              </div> : ""}
+                <div> ヽ༼⊙_⊙༽ﾉ</div>
+                <div>没有找到相关内容欸</div>
+              </div>
+            ) : (
+              <>
+                {hasSearch && filerPicUrls.length ? (
+                  <div
+                    className={styles.types + " font2"}
+                    style={{ height: 34 * vh, marginBottom: 48 * vh }}
+                  >
+                    {types.map((item, i) => {
+                      return (
+                        <div
+                          className={item === type ? styles.select : ""}
+                          key={i}
+                          onClick={() => setType(item)}
+                        >
+                          {item}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className={styles.p_box}>
-
                   {filerPicUrls.map((item, index) => {
-                    return <Event
-                      {...item}
-                      key={index}
-                      marginBottom={28}
-                      index={index}
-                      vh={vh}
-                      onClick={toClose}
-                    />
+                    return (
+                      <Event
+                        {...item}
+                        key={index}
+                        marginBottom={28}
+                        index={index}
+                        vh={vh}
+                        onClick={toClose}
+                      />
+                    );
                   })}
-                </div></>
-            }
+                </div>
+              </>
+            )}
           </div>
-          <div className={styles.close} style={{ top: 70 * vh, transform: `translateY(${res.length ? -120 * vh : 0}px)` }} onClick={toClose}>
+          <div
+            className={styles.close}
+            style={{
+              top: 70 * vh,
+              transform: `translateY(${res.length ? -120 * vh : 0}px)`,
+            }}
+            onClick={toClose}
+          >
             <Image src={close} />
           </div>
         </div>

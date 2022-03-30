@@ -6,6 +6,7 @@
 }
 .bannar {
   position: absolute;
+  height: 258px !important;
   width: 547px;
   background: url(../../assets/img/frame2/Rectangle\ 6.png) center no-repeat;
   background-size: 100% 100%;
@@ -13,25 +14,32 @@
   font-family: Dubai;
 }
 .font1 {
-  width: 386px;
+  height: 120px;
+  width: 286px;
   position: absolute;
   left: 68px;
 }
 .star1 {
   position: absolute;
+  height: 80px;
   width: 80px;
-  left: 273px;
+
+  left: 283px;
   top: 5px;
 }
 .star2 {
   position: absolute;
+  height: 45px;
   width: 45px;
-  left: 341px;
+
+  left: 351px;
 }
 .vector {
   position: absolute;
+  height: 140px;
   width: 240px;
   left: 510px;
+  top: 54px;
 }
 .font2 {
   position: absolute;
