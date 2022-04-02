@@ -11,8 +11,11 @@ import p4 from "../../assets/img/frame4/4.png";
 import xingyun from "../../assets/img/frame4/xingyun.png";
 import xingyun2 from "../../assets/img/frame4/xingyun2.png";
 import { useState, useRef, useEffect } from "react";
+import debonce from "../../util/debonce";
+
+
 export default function Frame4({ vh }) {
-  const [choose, setChoose] = useState(0);
+  let [choose, setChoose] = useState(0);
   const createNav = () => {
     const navs = [];
     for (let i = 0; i < 5; i++) {
@@ -29,10 +32,24 @@ export default function Frame4({ vh }) {
     return navs;
   };
 
+
+
+
+
+
   let initX, lastX, initLeft;
   let isMouseDown = false;
 
   const frame4Ref = useRef(null);
+
+  useEffect(() => {
+    document.querySelectorAll("span").forEach((item) => {
+      item.style.width = "100%";
+      item.style.height = "100%";
+    })
+
+    frame4Ref.current.addEventListener("wheel", wheel)
+  }, [])
   const mouseDown = (e) => {
     if (e.target.tagName !== "IMG") {
       initX = e.clientX;
@@ -63,9 +80,30 @@ export default function Frame4({ vh }) {
 
       isMouseDown = false;
     }
-
   }
 
+
+  const fn = debonce((e) => {
+    if (e.wheelDelta < 0) {
+      if (choose < 4) {
+        setChoose(choose + 1);
+        choose++;
+      } else {
+
+        // document.querySelector("#app").scrollTop += 800;
+      }
+    }
+    else if (e.wheelDelta > 0) {
+      if (choose > 0) {
+        setChoose(choose - 1);
+        choose--;
+      }
+    }
+  }, 800);
+
+  const wheel = (e) => {
+    fn(e);
+  };
 
   return (
     <div className={styles.frame4} onMouseDown={mouseDown} onMouseUp={mouseUp} onMouseMove={mouseMove} ref={frame4Ref}>

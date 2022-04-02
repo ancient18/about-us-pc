@@ -4,7 +4,7 @@ import logo from "../../assets/img/frame11/logo.png";
 
 export default function Footer({ vh }) {
   return (
-    <div className={styles.foot} style={{ height: 260 * vh }}>
+    <div className={styles.foot} style={{ height: 220 * vh }}>
       <div className={styles.logo} style={{ top: 73 * vh }}>
         <Image src={logo} />
       </div>

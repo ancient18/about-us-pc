@@ -6,7 +6,6 @@
   overflow: hidden;
   transition: transform 0.5s ease, opacity 1s linear;
   opacity: 1;
- 
 }
 
 .zuobianyun {
@@ -46,6 +45,7 @@
   transition: transform 1s ease;
   border-radius: 0px;
 }
+
 .quanquan {
   position: absolute;
   height: 360.11358642578125px;
@@ -62,7 +62,6 @@
   left: 23px;
   top: 176.7px;
   border-radius: 0px;
-
   transition: transform 1s ease;
 }
 .ball {
@@ -136,8 +135,7 @@
   top: 498.7px;
   border-radius: 0px;
   opacity: 0;
-  transition: opacity 0.2s linear;
-  transition: transform 1s ease;
+  transition: transform 1s ease ,opacity 0.1s linear;
   cursor: pointer;
   visibility: hidden;
 }

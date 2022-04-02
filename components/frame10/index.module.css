@@ -61,18 +61,20 @@
 .arrow1,
 .arrow2 {
   position: absolute;
-  width: 24px;
+  bottom:12.7vh !important;
+  width: 24px !important;
+  height: 12px !important;
   display: flex;
   align-items: center;
   z-index: 1;
   cursor: pointer;
 }
 .arrow1 {
-  left: 450px;
+  left: 420px;
   transform: rotate(180deg);
 }
 .arrow2 {
-  right: 450px;
+  right: 420px;
 }
 
 .hover {

@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import square from "../../assets/网页动效/无限循环.webp";
+import square from "../../assets/网页动效/单次循环.webp";
 import chanpin from "../../assets/网页动效/产品.webp";
 import shijue from "../../assets/网页动效/视觉.webp";
 import yidong from "../../assets/网页动效/移动.webp";
@@ -37,7 +37,6 @@ export default function Frame6({ vh }) {
       .querySelectorAll("img");
 
     imgArr.forEach((item) => {
-
       if (item.className === "square") {
         item.style.height = "20vw";
         item.style.width = "40vw";
@@ -52,6 +51,7 @@ export default function Frame6({ vh }) {
       }
 
       item.addEventListener("mouseover", () => {
+        console.log(item);
         switch (item.className) {
           case "web":
             item.src = web.src;
@@ -68,12 +68,15 @@ export default function Frame6({ vh }) {
           case "shijue":
             item.src = shijue.src;
             break;
+          case "square":
+            item.src = square.src;
           default:
             return;
         }
       });
     });
   });
+
 
   const createText = (container, department) => {
     const text = document.createElement("div");
@@ -128,6 +131,9 @@ export default function Frame6({ vh }) {
     let isDetailsAppear = false;
     if (e.target.className === styles.square || e.target.parentNode.className === styles.square) {
       container = e.target.className === styles.square ? e.target : e.target.parentNode;
+      container.querySelectorAll("img").forEach((item) => {
+        if (item.src) item.src = item.src;
+      })
       container.querySelectorAll("div").forEach((item) => {
         if (item.className === styles.font) {
           isDetailsAppear = true;
@@ -275,7 +281,7 @@ export default function Frame6({ vh }) {
 
             anime({
               targets: $yunwei.current,
-              translateX: -90 * mutiple,
+              translateX: -70 * mutiple,
               translateY: 0,
               duration: 2000
             })
