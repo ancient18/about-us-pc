@@ -50,10 +50,8 @@ const Event = ({
         : styles.event + " event"
     }
     style={{
-      minHeight: 198 * vh,
-      marginTop: 243 * vh,
+      marginTop: 253 * vh,
       transform: `translateY(${select === index ? 316 - 243 : 0}px)`,
-      // marginLeft: `${marginLeft * 1/14.4}vw`,
     }}
     onClick={() => {
       setSelect(index);
@@ -159,14 +157,14 @@ export default function Frame8({ vh }) {
           );
         })}
       </div>
-      <div className={styles.line} style={{ top: 571 * vh }}></div>
+      <div className={styles.line} style={{ top: 541 * vh }}></div>
       <div className={styles.heart} style={{ top: 514 * vh }}>
         <Image src={heart} />
       </div>
       <div
         className={styles.line2}
         style={{
-          top: `${570.5 * vh}px`,
+          top: `${540.5 * vh}px`,
           height: `${24 * vh}px`,
           transform: `translateX(${offsetLeftArr[select] || 0}vw)`,
         }}

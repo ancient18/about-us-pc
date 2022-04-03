@@ -19,9 +19,7 @@
   position: absolute;
   height: 302px;
   width: 268px;
-
   border-radius: 0px;
-
   left: 590px;
 }
 .year_selector {
@@ -80,6 +78,7 @@
 .hover {
   position: absolute;
   min-width: 300px;
+  max-width: 400px;
   min-height: 120px;
   padding: 30px;
   background-color: rgb(59, 57, 58, 0.5);

@@ -26,16 +26,16 @@ const font4 = {
 };
 
 // 写字
-let createText = (ctx, text, x, y) => {
+let createText = (ctx, text, x, y, number) => {
   let color, size;
-  let minWidth = body.clientWidth / 8;
-  if (x < minWidth * 1 || x > minWidth * 7) {
+  console.log(number);
+  if (number === 1) {
     color = font4.color;
     size = font4.size;
-  } else if (x < minWidth * 2 || x > minWidth * 6) {
+  } else if (number === 2 || number === 3) {
     color = font3.color;
     size = font3.size;
-  } else if (x < minWidth * 3 || x > minWidth * 5) {
+  } else if (number === 4 || number === 5) {
     color = font2.color;
     size = font2.size;
   } else {
@@ -43,12 +43,25 @@ let createText = (ctx, text, x, y) => {
     size = font1.size;
   }
   ctx.fillStyle = color;
-  ctx.font = size + "px pingfang-regular";
+  ctx.font = size / 14.4 + "vw pingfang-regular";
   ctx.fillText(text, x, y);
 };
 
 // 扩展random
-let random = (max) => Math.floor(Math.random() * max) + 80;
+// let random = (x,y) => Math.floor(Math.random() * max) + 80;
+
+let random = (minDistance, maxDistance) => {
+  const middleWidth = body.clientWidth / 2;
+  const middleHeight = body.clientHeight / 4;
+  let x, y;
+  while (x = Math.random() * body.clientWidth, y = Math.random() * body.clientHeight) {
+    let distance = Math.pow(x - middleWidth, 2) + Math.pow(y - middleHeight, 2)
+    if (distance > minDistance && distance < maxDistance) {
+      return [x, y];
+    }
+  }
+
+}
 
 // 测量函数
 let measureText = (ctx2, text) => {
@@ -60,32 +73,49 @@ let measureText = (ctx2, text) => {
   return { width, height };
 };
 
-// 随机的x和y
-let getCoordinate = (vh) => {
-  let x = random(body.clientWidth - 150);
-  let y = random(600 * vh);
+
+// 确定x,y的坐标
+let getCoordinate = (vh, size, square) => {
+  let x, y;
+  let distance = Math.pow(square.offsetWidth / 2, 2) + Math.pow(square.offsetHeight / 2, 2);
+
+  if (size === 1) {
+    [x, y] = random(5 * distance, 6 * distance)
+  } else if (size === 2 || size === 3) {
+    [x, y] = random(4 * distance, 5 * distance)
+  } else if (size === 4 || size === 5) {
+    [x, y] = random(3 * distance, 4 * distance)
+  } else {
+    [x, y] = random(distance, 2 * distance)
+  }
+  // let x = random(body.clientWidth - 150);
+  // let y = random(600 * vh);
   return { x, y };
 };
+
 
 // 碰撞
 let checkIsSave = (x, y, width, height, vh) => {
   let save = true;
-  if (x + width > body.clientWidth - 150 || y + height > 600 * vh - 50) {
+  if (x < 100 * vh || x + width > body.clientWidth - 200 || y > 580 * vh || y - height < 100 * vh) {
+    console.log(x, y, width, height, vh);
     return false;
   }
+
+  // 防止字重叠在一起
   let c1 = {
     x: x + width / 2,
-    y: y + height / 2,
+    y: y - height / 2,
   };
   boundary.forEach((item) => {
     const { x, y, width: w, height: h } = item;
     let c2 = {
       x: x + w / 2,
-      y: y + h / 2,
+      y: y - h / 2,
     };
     if (
-      Math.abs(c1.x - c2.x) <= (w + width) / 2 &&
-      Math.abs(c1.y - c2.y) <= (h + height) / 2
+      Math.abs(c1.x - c2.x) <= (w + width) &&
+      Math.abs(c1.y - c2.y) <= (h + height)
     ) {
       save = false;
     }
@@ -134,6 +164,7 @@ export default function Frame10({ vh }) {
 
   useEffect(() => {
 
+
     if (canvas && canvas2 && body) {
       let ctx = canvas.getContext("2d");
       let ctx2 = canvas2.getContext("2d");
@@ -147,6 +178,17 @@ export default function Frame10({ vh }) {
 
       let location = new Set();
 
+      // 存一个公司中人的数量
+      const number = {};
+
+      member.forEach((item) => {
+        if (!number[item.location]) {
+          number[item.location] = 1;
+        } else {
+          number[item.location]++;
+        }
+      })
+
       member.forEach((item) => {
         let l = item.location.split("有限公司")[0].split("(")[0].split("（")[0];
 
@@ -154,23 +196,23 @@ export default function Frame10({ vh }) {
           location.add(l);
           let width, height, x, y, res;
 
-          res = getCoordinate(vh);
+          res = getCoordinate(vh, number[item.location], $square.current);
           x = res.x;
           y = res.y;
 
-          createText(ctx2, l, x, y);
+          createText(ctx2, l, x, y, number[item.location]);
           width = measureText(ctx2, l).width;
           height = measureText(ctx2, l).height;
 
           while (!checkIsSave(x, y, width, height, vh)) {
-            res = getCoordinate(vh);
+            res = getCoordinate(vh, number[item.location], $square.current);
             x = res.x;
             y = res.y;
-            createText(ctx2, l, x, y);
+            createText(ctx2, l, x, y, number[item.location]);
             width = measureText(ctx2, l).width;
             height = measureText(ctx2, l).height;
           }
-          createText(ctx, l, x, y);
+          createText(ctx, l, x, y, number[item.location]);
           boundary.push({
             x,
             width,
@@ -195,7 +237,7 @@ export default function Frame10({ vh }) {
             moveFlag = true;
             visible = true;
             hoverRef.current.style.left = `${x + width / 2 - hoverRef.current.offsetWidth / 2}px`;
-            hoverRef.current.style.top = `${y - height / 2 - hoverRef.current.offsetHeight - 10}px`;
+            hoverRef.current.style.top = `${y - height / 2 - hoverRef.current.offsetHeight - 20}px`;
 
 
             // 储存姓名
@@ -225,8 +267,6 @@ export default function Frame10({ vh }) {
         } else {
           hoverRef.current.style.display = "none"
         }
-
-
 
       })
       draw = true;
@@ -258,9 +298,6 @@ export default function Frame10({ vh }) {
       setOffset(o);
     }, 100);
   }, [select]);
-
-
-
 
 
   return (
@@ -336,3 +373,8 @@ export default function Frame10({ vh }) {
     </div>
   );
 }
+
+
+
+
+

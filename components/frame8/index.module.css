@@ -23,21 +23,31 @@
 .event {
   background-color: #1b1b1b;
   width: 209px;
+  height: 198px;
+  min-height: 198px !important;
   border-end-end-radius: 50px;
   border-start-start-radius: 50px;
   color: #aba5a5;
   position: relative;
   transition: all 0.6s linear;
+  box-shadow: 2px 2px 2px 1px #f5abba;
+  opacity: 0.9;
 }
 .time {
   text-align: right;
   margin-right: 24px;
   font-weight: 900;
   font-family: DIN Black;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .article {
   margin: 0 24px;
+  font-family: PingFang SC;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 .range_box {
   position: absolute;
@@ -68,17 +78,20 @@
   transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707)
     translate(0, -50%);
 }
+
 .range:after {
   /* transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%); */
   transform: rotate(155deg) skewY(2deg) scale(1, 1.414) translate(50%);
+  box-shadow: 1.1px -3px 1px 1px #f5abba;
 }
+
 .event.active,
 .range.active {
   background-color: #fff;
 }
 .time.active,
 .article.active {
-  color: #000;
+  color: #141414;
 }
 
 .line {
@@ -113,5 +126,6 @@
 .heart {
   position: absolute;
   width: 33px;
+  height: 27.84px;
   left: 2178px;
 }
