@@ -14,68 +14,18 @@ import yun from "../../assets/img/youshangyun.png";
 import youxia from "../../assets/img/youxia.png";
 import ball2 from "../../assets/img/ball2.png";
 import yun2 from "../../assets/img/zuobianyun.png";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import anime from "animejs";
-import debonce from "../../util/debonce";
+import throttle from "../../util/throttle";
 let app,
   body,
   $vh = 0,
   $slider,
   current = 0;
 
-const fn = debonce((e) => {
-  if (e.wheelDelta < 0) {
-    document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'absolute', 'important');
-    if (current === 9) {
-      let init = app.scrollTop
-      const timer = setInterval(function () {
-        if (init + 516 * $vh >= app.scrollTop) {
-          app.scrollTop += 4 * $vh;
-        } else {
-          clearInterval(timer);
-        }
-      }, 1)
-
-      current++;
-      return;
-    } else if (current > 9) {
-      return;
-    }
-    // else if (current === 2) {
-    //   body.removeEventListener("wheel", wheel);
-    //   return;
-    // }
-    current++;
-  } else if (e.wheelDelta > 0) {
-    document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'fixed', 'important');
-    if (current === 10) {
-      current = 9;
-      let init = app.scrollTop
-      const timer = setInterval(function () {
-        if (init - 516 * $vh <= app.scrollTop) {
-          app.scrollTop -= 4 * $vh;
-        } else {
-          clearInterval(timer);
-        }
-      }, 1)
-      return;
-    } else if (current === 0) {
-      current = -1;
-      app.scrollTop = 0;
-      body.removeEventListener("wheel", wheel);
-      return;
-    }
-    current--;
-  }
-  $slider.slickGoTo(current);
-}, 800);
 
 
 
-
-const wheel = (e) => {
-  fn(e);
-};
 
 export default function Frame1({ vh, slider }) {
   const $ban = useRef(null);
@@ -86,6 +36,71 @@ export default function Frame1({ vh, slider }) {
   const $diZuo = useRef(null);
   const $quanquan = useRef(null);
   const $ball = useRef(null);
+  // 记录轮播图滑动次数
+  let count = 0;
+
+
+  const fn = throttle((e) => {
+    if (e.wheelDelta < 0) {
+      document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'absolute', 'important');
+      if (current === 8) {
+        let init = app.scrollTop
+        const timer = setInterval(function () {
+          if (init + 476 * $vh >= app.scrollTop) {
+            app.scrollTop += 4 * $vh;
+          } else {
+            clearInterval(timer);
+          }
+        }, 1)
+
+        current++;
+        return;
+      } else if (current > 9) {
+        return;
+      }
+      else if (current === 2) {
+        count++;
+        if (count < 5) {
+          current--;
+        }
+
+
+      }
+      current++;
+    } else if (e.wheelDelta > 0) {
+      document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'fixed', 'important');
+      if (current === 9) {
+        current = 8;
+        let init = app.scrollTop
+        const timer = setInterval(function () {
+          if (init - 476 * $vh <= app.scrollTop) {
+            app.scrollTop -= 4 * $vh;
+          } else {
+            clearInterval(timer);
+          }
+        }, 1)
+        return;
+      } else if (current === 2) {
+        count--;
+        if (count >= 0) {
+          current++;
+        }
+      }
+      else if (current === 0) {
+        current = -1;
+        app.scrollTop = 0;
+        body.removeEventListener("wheel", wheel);
+        return;
+      }
+      current--;
+    }
+    $slider.slickGoTo(current);
+  }, 800);
+
+
+  const wheel = (e) => {
+    fn(e);
+  };
 
   useEffect(() => {
     $slider = slider.current;

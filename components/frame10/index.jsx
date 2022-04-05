@@ -28,7 +28,6 @@ const font4 = {
 // 写字
 let createText = (ctx, text, x, y, number) => {
   let color, size;
-  console.log(number);
   if (number === 1) {
     color = font4.color;
     size = font4.size;
@@ -114,8 +113,8 @@ let checkIsSave = (x, y, width, height, vh) => {
       y: y - h / 2,
     };
     if (
-      Math.abs(c1.x - c2.x) <= (w + width) &&
-      Math.abs(c1.y - c2.y) <= (h + height)
+      Math.abs(c1.x - c2.x) <= (w + width) / 1.5 &&
+      Math.abs(c1.y - c2.y) <= (h + height) / 1.5
     ) {
       save = false;
     }
@@ -228,7 +227,9 @@ export default function Frame10({ vh }) {
       let moveFlag = false;
 
 
+
       canvasRef.current.addEventListener("mousemove", (e) => {
+        console.log(e);
         // 动画盒子是否可见
         let visible = false
         boundary.map((item) => {
@@ -268,7 +269,7 @@ export default function Frame10({ vh }) {
           hoverRef.current.style.display = "none"
         }
 
-      })
+      });
       draw = true;
     }
   }, [member]);

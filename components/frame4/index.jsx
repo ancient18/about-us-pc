@@ -11,7 +11,7 @@ import p4 from "../../assets/img/frame4/4.png";
 import xingyun from "../../assets/img/frame4/xingyun.png";
 import xingyun2 from "../../assets/img/frame4/xingyun2.png";
 import { useState, useRef, useEffect } from "react";
-import debonce from "../../util/debonce";
+import throttle from "../../util/throttle";
 
 
 export default function Frame4({ vh }) {
@@ -83,7 +83,7 @@ export default function Frame4({ vh }) {
   }
 
 
-  const fn = debonce((e) => {
+  const fn = throttle((e) => {
     if (e.wheelDelta < 0) {
       if (choose < 4) {
         setChoose(choose + 1);

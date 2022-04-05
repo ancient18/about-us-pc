@@ -47,11 +47,12 @@
   margin: 0 34px;
 }
 .search_icon {
-  width: 25px;
+  width: 19px;
+  height: 19px;
   position: absolute;
   right: 34px;
   cursor: pointer;
-  top: 3px;
+  top: 7px;
 }
 .ipt_box {
   position: relative;
@@ -60,6 +61,7 @@
 }
 .close {
   width: 18px;
+  height:18px;
   position: absolute;
   right: 240px;
   cursor: pointer;

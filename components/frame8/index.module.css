@@ -19,6 +19,7 @@
 .event_container {
   display: flex;
   align-items: center;
+  transition: all 0.6s linear;
 }
 .event {
   background-color: #1b1b1b;
@@ -30,7 +31,7 @@
   color: #aba5a5;
   position: relative;
   transition: all 0.6s linear;
-  box-shadow: 2px 2px 2px 1px #f5abba;
+  /* box-shadow: 2px 2px 2px 1px #f5abba; */
   opacity: 0.9;
 }
 .time {
@@ -82,13 +83,22 @@
 .range:after {
   /* transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%); */
   transform: rotate(155deg) skewY(2deg) scale(1, 1.414) translate(50%);
-  box-shadow: 1.1px -3px 1px 1px #f5abba;
+  /* box-shadow: 1.1px -3px 1px 1px #f5abba; */
 }
 
 .event.active,
 .range.active {
   background-color: #fff;
 }
+
+.event.active {
+  box-shadow: 2px 2px 2px 1px #f5abba;
+}
+
+.range.active:after {
+  box-shadow: 1.1px -3px 1px 1px #f5abba;
+}
+
 .time.active,
 .article.active {
   color: #141414;
@@ -99,6 +109,7 @@
   height: 1px;
   background-color: #8172de;
   position: absolute;
+  transition: all 0.6s linear;
 }
 .line2 {
   position: absolute;
@@ -127,5 +138,39 @@
   position: absolute;
   width: 33px;
   height: 27.84px;
-  left: 2178px;
+  left: 690px;
+  display: none;
+}
+
+.radius {
+  position: absolute;
+  width: 100px;
+  height: 50px !important;
+  border-radius: 0 0 50px 50px;
+  border-bottom: 1px solid;
+  transition: all 0.7s ease;
+  overflow: hidden;
+  border: 2px solid;
+
+  border-image: linear-gradient(
+      to left,
+      rgba(0, 255, 255, 0.8),
+      rgba(255, 255, 0, 0.8) 20%,
+      rgba(255, 255, 0, 0.8) 80%,
+      rgba(0, 255, 255, 0.8)
+    )
+    1;
+}
+
+.emoji {
+  position: absolute;
+  /* width: 29px;
+  height: 29px; */
+  right: 25px;
+  bottom: 0;
+  font-size: 29px;
+}
+
+.None {
+  display: none;
 }

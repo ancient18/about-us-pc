@@ -189,12 +189,14 @@
 .qrcode1 {
   position: absolute;
   width: 86px;
+  height: 86px;
   right: 0px;
   bottom: 0;
 }
 .qrcode2 {
   position: absolute;
   width: 86px;
+  height: 86px;
 }
 .xingyun {
   position: absolute;

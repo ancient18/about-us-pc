@@ -10,7 +10,7 @@ import Image from "next/image";
 import search from "../assets/img/search.png";
 import close from "../assets/img/close.png";
 import anime from "animejs";
-import debonce from "../util/debonce";
+import throttle from "../util/throttle";
 import { search as $search } from "../api";
 import Event from "../components/Event";
 
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
   const [type, setType] = useState("全部");
   const [hasSearch, setHasSearch] = useState(false);
 
-  const $setVh = debonce((v) => {
+  const $setVh = throttle((v) => {
     setVh(v);
   }, 1000);
   useEffect(() => {

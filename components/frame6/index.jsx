@@ -7,7 +7,7 @@ import yunwei from "../../assets/网页动效/SRE.webp";
 import web from "../../assets/网页动效/WEB.webp";
 import Image from "next/image";
 import anime from "animejs";
-import debonce from "../../util/debonce";
+import throttle from "../../util/throttle";
 
 import { useEffect, useRef } from "react";
 
@@ -334,7 +334,7 @@ export default function Frame6({ vh }) {
   }
 
   return (
-    <div className={styles.frame} style={{ paddingTop: 118 * vh }} ref={$frame} onClick={debonce(click, 1000)}>
+    <div className={styles.frame} style={{ paddingTop: 118 * vh }} ref={$frame} onClick={throttle(click, 1000)}>
       <div className={styles.container}>
         <div
           className={styles.square}

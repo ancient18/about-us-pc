@@ -1,4 +1,4 @@
-// 防抖
+// 节流
 
 export default (fn, time) => {
   let timer;

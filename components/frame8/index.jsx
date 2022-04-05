@@ -33,6 +33,8 @@ let offsetLeftArr = [],
   space = [];
 let last = 0;
 
+const emoji = ['😄', '😝', '😘', '😋', '😍', '😇', '🧐']
+
 const Event = ({
   time,
   article,
@@ -81,6 +83,7 @@ const Event = ({
         }
       ></div>
     </div>
+    <div className={index === select ? styles.emoji : styles.None}>{emoji[index]}</div>
   </div>
 );
 
@@ -88,6 +91,7 @@ export default function Frame8({ vh }) {
   const [vw, setVw] = useState(0);
   const [select, setSelect] = useState(0);
   const $frame = useRef(null);
+  const $heart = useRef(null);
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -128,12 +132,22 @@ export default function Frame8({ vh }) {
     });
   }, [vw]);
 
+  useEffect(() => {
+    if (select === 6) {
+      setTimeout(() => {
+        $heart.current.style.display = "block";
+      },600)
+    } else {
+      $heart.current.style.display = "none";
+    }
+  }, [select])
+
   return (
     <div
       className={styles.frame}
-      style={{
-        transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
-      }}
+      // style={{
+      //   transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
+      // }}
       ref={$frame}
     >
       <div className={styles.square} style={{ top: 153 * vh }}>
@@ -142,7 +156,12 @@ export default function Frame8({ vh }) {
       <div className={styles.square2} style={{ top: 153 * vh }}>
         <Image src={square} />
       </div>
-      <div className={styles.event_container}>
+      <div className={styles.event_container}
+        style={{
+          transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
+        }}
+      >
+
         {data.map((item, index) => {
           return (
             <Event
@@ -157,18 +176,25 @@ export default function Frame8({ vh }) {
           );
         })}
       </div>
-      <div className={styles.line} style={{ top: 541 * vh }}></div>
-      <div className={styles.heart} style={{ top: 514 * vh }}>
+      <div className={styles.line} style={{ top: 541 * vh, transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)` }}></div>
+      <div className={styles.heart} style={{ top: 470 * vh }} ref={$heart}>
         <Image src={heart} />
       </div>
-      <div
+      {/* <div
         className={styles.line2}
         style={{
           top: `${540.5 * vh}px`,
           height: `${24 * vh}px`,
           transform: `translateX(${offsetLeftArr[select] || 0}vw)`,
         }}
-      ></div>
+      ></div> */}
+      <div className={styles.radius}
+        style={{
+          top: `${540.5 * vh}px`,
+          height: `${24 * vh}px`,
+          transform: `translateX(${select > 1 ? offsetLeftArr[select] - offset[select - 2] : offsetLeftArr[select]}vw)`,
+        }}>
+      </div>
     </div>
   );
 }
