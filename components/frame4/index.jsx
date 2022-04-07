@@ -32,11 +32,6 @@ export default function Frame4({ vh }) {
     return navs;
   };
 
-
-
-
-
-
   let initX, lastX, initLeft;
   let isMouseDown = false;
 
@@ -88,9 +83,6 @@ export default function Frame4({ vh }) {
       if (choose < 4) {
         setChoose(choose + 1);
         choose++;
-      } else {
-
-        // document.querySelector("#app").scrollTop += 800;
       }
     }
     else if (e.wheelDelta > 0) {

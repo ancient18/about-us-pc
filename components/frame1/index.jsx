@@ -37,7 +37,9 @@ export default function Frame1({ vh, slider }) {
   const $quanquan = useRef(null);
   const $ball = useRef(null);
   // 记录轮播图滑动次数
-  let count = 0;
+  let sliderCount = 0;
+  // 记录卡片滑动次数
+  let detailCount = 1;
 
 
   const fn = throttle((e) => {
@@ -59,12 +61,16 @@ export default function Frame1({ vh, slider }) {
         return;
       }
       else if (current === 2) {
-        count++;
-        if (count < 5) {
+        sliderCount++;
+        if (sliderCount < 5) {
           current--;
         }
-
-
+      } else if (current === 6) {
+        detailCount++;
+        // console.log(detailCount);
+        if (detailCount < 7) {
+          current--;
+        }
       }
       current++;
     } else if (e.wheelDelta > 0) {
@@ -81,8 +87,14 @@ export default function Frame1({ vh, slider }) {
         }, 1)
         return;
       } else if (current === 2) {
-        count--;
-        if (count >= 0) {
+        sliderCount--;
+        if (sliderCount >= 0) {
+          current++;
+        }
+      } else if (current === 6) {
+        detailCount--;
+
+        if (detailCount >= 0) {
           current++;
         }
       }

@@ -92,11 +92,11 @@
 }
 
 .event.active {
-  box-shadow: 2px 2px 2px 1px #f5abba;
+  box-shadow: 2px 2px 2px 1px #ffa38f;
 }
 
 .range.active:after {
-  box-shadow: 1.1px -3px 1px 1px #f5abba;
+  box-shadow: 1.1px -3px 1px 1px #ffa38f;
 }
 
 .time.active,
@@ -106,7 +106,7 @@
 
 .line {
   width: 2211px;
-  height: 1px;
+  height: 2px;
   background-color: #8172de;
   position: absolute;
   transition: all 0.6s linear;
@@ -160,6 +160,22 @@
       rgba(0, 255, 255, 0.8)
     )
     1;
+
+  border: 2px solid;
+  /* border-image-source: linear-gradient(to top, red, yellow); */
+
+  background: linear-gradient(
+      193.98deg,
+      rgba(255, 173, 126, 0.2) 64.65%,
+      rgba(255, 193, 135, 0) 97.79%
+    ),
+    radial-gradient(
+      119.2% 63.76% at 13.67% 79.3%,
+      #ff8585 0.1%,
+      #ffdead 42.29%,
+      rgba(255, 196, 141, 0) 98.61%
+    ),
+    linear-gradient(136.35deg, #5a61ff 0%, #ffaecb 95.56%);
 }
 
 .emoji {
@@ -174,3 +190,5 @@
 .None {
   display: none;
 }
+
+

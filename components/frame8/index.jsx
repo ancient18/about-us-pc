@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import square from "../../assets/img/frame6/square.png";
 import heart from "../../assets/img/frame8/Vector.png";
+import throttle from "../../util/throttle";
 
 const data = [
   { time: "2000-10", article: "红岩网校工作站正式成立", marginLeft: 121 },
@@ -94,24 +95,6 @@ export default function Frame8({ vh }) {
   const $heart = useRef(null);
 
   useEffect(() => {
-    const body = document.querySelector("body");
-    let $vw = body.clientWidth / 100;
-    $frame.current.querySelectorAll("span").forEach((item) => {
-      item.style.setProperty('width', '100%', 'important');
-      item.style.setProperty('height', '100%', 'important');
-    })
-    // let $vw = 1/14.4;
-    setVw($vw);
-  }, []);
-
-  useEffect(() => {
-    const events = [...document.querySelectorAll(".event")];
-    events.map((item, index) => {
-      item.style.marginLeft = `${data[index].marginLeft * 1 / 14.4}vw`
-    })
-  }, [vw])
-
-  useEffect(() => {
     if (!vh || !vw) {
       return;
     }
@@ -133,12 +116,56 @@ export default function Frame8({ vh }) {
   }, [vw]);
 
   useEffect(() => {
+    const body = document.querySelector("body");
+    let $vw = body.clientWidth / 100;
+    $frame.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty('width', '100%', 'important');
+      item.style.setProperty('height', '100%', 'important');
+    })
+
+    // $frame.current.addEventListener("wheel", wheel);
+    // let $vw = 1/14.4;
+    setVw($vw);
+  }, []);
+
+  useEffect(() => {
+    const events = [...document.querySelectorAll(".event")];
+    events.map((item, index) => {
+      item.style.marginLeft = `${data[index].marginLeft * 1 / 14.4}vw`
+    })
+  }, [vw])
+
+
+  const fn = throttle((e) => {
+    console.log(select);
+    if (e.nativeEvent.wheelDelta < 0) {
+      if (select < 6) {
+        setSelect(select + 1);
+        select++;
+      }
+    }
+    else if (e.nativeEvent.wheelDelta > 0) {
+      if (select > 0) {
+        setSelect(select - 1);
+        select--;
+      }
+    }
+  }, 800);
+
+  const wheel = (e) => {
+    fn(e);
+  };
+
+
+  let timer;
+  useEffect(() => {
     if (select === 6) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         $heart.current.style.display = "block";
-      },600)
+      }, 600)
     } else {
       $heart.current.style.display = "none";
+      clearTimeout(timer);
     }
   }, [select])
 
@@ -149,6 +176,7 @@ export default function Frame8({ vh }) {
       //   transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
       // }}
       ref={$frame}
+      onWheel={throttle((e) => { fn(e) }, 800)}
     >
       <div className={styles.square} style={{ top: 153 * vh }}>
         <Image src={square} />
@@ -161,7 +189,6 @@ export default function Frame8({ vh }) {
           transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
         }}
       >
-
         {data.map((item, index) => {
           return (
             <Event
@@ -176,7 +203,7 @@ export default function Frame8({ vh }) {
           );
         })}
       </div>
-      <div className={styles.line} style={{ top: 541 * vh, transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)` }}></div>
+      <div className={styles.line} style={{ top: 540 * vh, transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)` }}></div>
       <div className={styles.heart} style={{ top: 470 * vh }} ref={$heart}>
         <Image src={heart} />
       </div>
@@ -188,7 +215,7 @@ export default function Frame8({ vh }) {
           transform: `translateX(${offsetLeftArr[select] || 0}vw)`,
         }}
       ></div> */}
-      <div className={styles.radius}
+      <div className={styles.line2}
         style={{
           top: `${540.5 * vh}px`,
           height: `${24 * vh}px`,

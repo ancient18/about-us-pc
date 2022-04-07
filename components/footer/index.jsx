@@ -1,6 +1,8 @@
 import styles from "./index.module.css";
 import Image from "next/image";
 import logo from "../../assets/img/frame11/logo.png";
+import qrcode1 from "../../assets/img/frame4/qrcode1.png";
+import qrcode2 from "../../assets/img/frame4/qrcode2.png";
 
 export default function Footer({ vh }) {
   return (
@@ -8,6 +10,12 @@ export default function Footer({ vh }) {
       <div className={styles.logo} style={{ top: 73 * vh }}>
         <Image src={logo} />
       </div>
+      {/* <div className={styles.qrcode1}>
+        <Image src={qrcode1}></Image>
+      </div>
+      <div className={styles.qrcode2}>
+        <Image src={qrcode2}></Image>
+      </div> */}
       <div className={styles.link} style={{ top: 64 * vh }}>
         <div>重邮小帮手</div>
         <div>官方QQ</div>

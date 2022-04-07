@@ -77,7 +77,7 @@
   position: relative;
 }
 
-.event > div:nth-child(2){
+.event > div:nth-child(2) {
   width: 239px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -85,7 +85,7 @@
   white-space: nowrap;
 }
 
-.event > div:nth-child(3){
+.event > div:nth-child(3) {
   width: 239px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -94,7 +94,6 @@
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-
 }
 
 .pic {
@@ -110,17 +109,16 @@
   z-index: 1;
 }
 
-.tag{
+.tag {
   position: absolute;
   color: #ff406e;
   right: 23px;
 }
 
-.tag2{
+.tag2 {
   position: absolute;
   right: 23px;
-  background: linear-gradient(to right,
-  #E69900,#5040D5);
+  background: linear-gradient(to right, #e69900, #5040d5);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -173,7 +171,7 @@
   background-size: 100% 100%;
 }
 
-.product > div:nth-child(2){
+.product > div:nth-child(2) {
   width: 185px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -192,9 +190,10 @@
 }
 
 .box3 {
-  position: absolute;
+  position: relative;
   padding-left: 14px;
   width: 100vw;
+  margin-top: -200px;
   z-index: 0;
 }
 
@@ -281,4 +280,14 @@
 .types .select {
   color: #ff406e;
   font-weight: 700;
+}
+
+.arrow {
+  width: 24px;
+  height: 12px;
+}
+
+.bolikuai {
+  height: 119px;
+  width: 125.88426208496094px;
 }

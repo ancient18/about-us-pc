@@ -6,7 +6,7 @@ import arrow from "../assets/img/about/arrow.png";
 import r from "../assets/img/about/r.png";
 import arrow2 from "../assets/img/frame4/arrow.png";
 import yinhao from "../assets/img/about/Vector.png";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Event from "../components/Event";
 import { getBannar, getCard, getEasyInfo } from "../api";
 const types = ["全部", "活动", "技术分享"];
@@ -30,21 +30,22 @@ const Product = ({ picUrl, title, article, vh }) => (
 );
 
 export async function getStaticProps(ctx) {
-  const data = await Promise.all([getBannar(), getCard(), getEasyInfo()])
+  const data = await Promise.all([getBannar(), getCard(), getEasyInfo()]);
   return {
     props: {
       state: {
         bannar: data[0].figures,
         card: data[1].cards,
-        easyInfo: data[2].essays
-      }
-    }
-  }
+        easyInfo: data[2].essays,
+      },
+    },
+  };
 }
 
 export default function About({ vh, state }) {
   const [type, setType] = useState("全部");
-  const { bannar, easyInfo, card } = state
+  const { bannar, easyInfo, card } = state;
+  const $box = useRef(null);
   const filerPicUrls = easyInfo.filter((item) => {
     if (type === "全部") return true;
     else if (type === "活动") return item.type === type;
@@ -66,13 +67,38 @@ export default function About({ vh, state }) {
     dotsClass: styles.nav_box,
   };
 
+  useEffect(() => {
+    $box.current.querySelectorAll("img").forEach((item) => {
+      item.style.transition = "all 0.6s linear";
+    });
+  }, []);
+
+  const mouseOver = (e) => {
+    if (
+      e.target.tagName === "IMG" &&
+      e.target.parentNode.parentNode.className !== styles.bolikuai &&
+      e.target.parentNode.parentNode.className !== styles.arrow
+    ) {
+      $box.current.querySelectorAll("img").forEach((item) => {
+        item.style.transform = "scale(1)";
+      });
+      e.target.style.transform = `scale(1.2)`;
+    }
+  };
+
+  const mouseOut = () => {
+    $box.current.querySelectorAll("img").forEach((item) => {
+      item.style.transform = "scale(1)";
+    });
+  };
+
   return (
     <>
-      <div className={styles.box} style={{ height: 647 * vh }}>
+      <div className={styles.box} style={{ height: 607 * vh }}>
         <Slider {...settings}>
           {bannar.map((item, index) => (
             <div key={index}>
-              <div className={styles.item} style={{ height: 648 * vh }}>
+              <div className={styles.item} style={{ height: 608 * vh }}>
                 <Image src={item.pic} layout="fill" quality={100} priority />
               </div>
             </div>
@@ -85,7 +111,7 @@ export default function About({ vh, state }) {
             <span />
             <div>近期活动</div>
           </div>
-          <div
+          {/* <div
             className={styles.types + " font2"}
             style={{ marginTop: 36 * vh }}
           >
@@ -100,8 +126,14 @@ export default function About({ vh, state }) {
                 </div>
               );
             })}
-          </div>
-          <div className={styles.event_box} style={{ marginTop: 48 * vh }}>
+          </div> */}
+          <div
+            className={styles.event_box}
+            style={{ marginTop: 48 * vh }}
+            onMouseMove={mouseOver}
+            onMouseOut={mouseOut}
+            ref={$box}
+          >
             {filerPicUrls.map((item, index) => (
               <Event
                 {...item}
@@ -119,10 +151,10 @@ export default function About({ vh, state }) {
                 <div className="font4" style={{ marginTop: 39 * vh }}>
                   查看更多
                 </div>
-                <div style={{ top: 75 * vh }}>
+                <div className={styles.arrow} style={{ top: 75 * vh }}>
                   <Image src={arrow} layout="fill" />
                 </div>
-                <div style={{ top: -49 * vh }}>
+                <div className={styles.bolikuai} style={{ top: -49 * vh }}>
                   <Image src={bolikuai} layout="fill" />
                 </div>
               </div>
@@ -148,17 +180,17 @@ export default function About({ vh, state }) {
               />
             ))}
           </div>
-          <div
-            className={styles.box3}
-            style={{ height: 165 * vh, top: 1007 * vh }}
-          >
+          <div className={styles.box3} style={{ height: 165 * vh }}>
             <div style={{ top: 103 * vh }}></div>
             {card.length > 3 ? (
               <div style={{ top: 103 * vh }}>
-                <div className="font4" style={{ marginBottom: 12 * vh, cursor: 'pointer' }}>
+                <div
+                  className="font4"
+                  style={{ marginBottom: 12 * vh, cursor: "pointer" }}
+                >
                   查看更多
                 </div>
-                <div style={{ cursor: 'pointer' }}>
+                <div style={{ cursor: "pointer" }}>
                   <Image src={arrow2} />
                 </div>
               </div>

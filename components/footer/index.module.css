@@ -25,3 +25,19 @@
   text-align: right;
   color: #6a6a6a;
 }
+
+
+.qrcode1 {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  right: 100px;
+  bottom: 0;
+}
+.qrcode2 {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  right: 545px;
+  top: -10px;
+}
