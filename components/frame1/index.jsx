@@ -67,8 +67,7 @@ export default function Frame1({ vh, slider }) {
         }
       } else if (current === 6) {
         detailCount++;
-        // console.log(detailCount);
-        if (detailCount < 7) {
+        if (detailCount < 6) {
           current--;
         }
       }

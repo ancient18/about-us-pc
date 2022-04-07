@@ -137,17 +137,22 @@ export default function Frame8({ vh }) {
 
 
   const fn = throttle((e) => {
-    console.log(select);
     if (e.nativeEvent.wheelDelta < 0) {
       if (select < 6) {
-        setSelect(select + 1);
-        select++;
+        setTimeout(() => {
+          setSelect(select + 1);
+          select++;
+        },200)
+
       }
     }
     else if (e.nativeEvent.wheelDelta > 0) {
       if (select > 0) {
-        setSelect(select - 1);
-        select--;
+        setTimeout(() => {
+          setSelect(select - 1);
+          select--;
+        },200)
+
       }
     }
   }, 800);
@@ -157,14 +162,16 @@ export default function Frame8({ vh }) {
   };
 
 
-  let timer;
   useEffect(() => {
+    let timer;
     if (select === 6) {
       timer = setTimeout(() => {
         $heart.current.style.display = "block";
       }, 600)
     } else {
       $heart.current.style.display = "none";
+    }
+    return () => {
       clearTimeout(timer);
     }
   }, [select])
@@ -225,3 +232,7 @@ export default function Frame8({ vh }) {
     </div>
   );
 }
+
+
+
+

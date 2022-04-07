@@ -80,6 +80,7 @@ export default function Frame4({ vh }) {
 
   const fn = throttle((e) => {
     if (e.wheelDelta < 0) {
+      console.log(choose);
       if (choose < 4) {
         setChoose(choose + 1);
         choose++;
