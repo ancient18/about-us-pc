@@ -51,8 +51,8 @@
   height: 21px;
   background-color: #ff406e;
   z-index: 0;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .wraper {
@@ -72,6 +72,7 @@
   box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
   border-radius: 32px;
   width: 282px;
+  height: 295px !important;
   margin-right: 24px;
   cursor: pointer;
   position: relative;
@@ -97,8 +98,11 @@
 }
 
 .pic {
-  width: 250px;
   position: relative;
+  width: 250px;
+  height: 141px !important;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .event_box {
@@ -193,6 +197,7 @@
   position: relative;
   padding-left: 14px;
   width: 100vw;
+  height: 165px !important;
   margin-top: -200px;
   z-index: 0;
 }
@@ -225,6 +230,7 @@
 .r {
   position: absolute;
   width: 614px;
+  height: 420px;
   left: 677px;
   z-index: 0;
 }
@@ -244,6 +250,7 @@
 .yinhao {
   position: absolute;
   width: 51px;
+  height: 41.09px;
   left: 56px;
 }
 
@@ -251,6 +258,8 @@
   margin-left: 115px;
   width: 795px;
   color: #000;
+  font-weight: 400;
+  font-family: Regular PingFang SC;
 }
 
 .btn {
@@ -259,8 +268,18 @@
   background: transparent;
   border-color: #ff406e;
   width: 128px;
-  border-radius: 5px;
+  height: 50px !important;
+  line-height: 47px;
+  border-radius: 10px;
+  border: 1.5px solid;
+  /* font-size: 16px !important; */
+  text-align: center;
   cursor: pointer;
+}
+
+.btn:hover {
+  color: #fff;
+  background: #ff406e;
 }
 
 .types {
@@ -283,7 +302,7 @@
 }
 
 .arrow {
-  width: 24px;
+  width: 30px !important;
   height: 12px;
 }
 

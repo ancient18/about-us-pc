@@ -21,9 +21,11 @@
 }
 .imf {
   position: absolute;
-  right: 120px;
+  right: 100px;
   text-align: right;
   color: #6a6a6a;
+  font-family: Regular PingFang SC !important;
+  font-weight: 400;
 }
 
 

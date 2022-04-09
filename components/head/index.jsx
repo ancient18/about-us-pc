@@ -79,7 +79,6 @@ export default function Head({ vh, showModel }) {
     );
   return (
     <div
-
       className={styles.frame1_bar + " flex-center-center"}
       style={{
         height: 72 * vh,

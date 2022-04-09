@@ -134,15 +134,19 @@ export default function About({ vh, state }) {
             onMouseOut={mouseOut}
             ref={$box}
           >
-            {filerPicUrls.map((item, index) => (
-              <Event
-                {...item}
-                key={index}
-                marginBottom={28}
-                index={index}
-                vh={vh}
-              />
-            ))}
+            {filerPicUrls.map((item, index) => {
+              if (index < 7) {
+                return (
+                  <Event
+                    {...item}
+                    key={index}
+                    marginBottom={28}
+                    index={index}
+                    vh={vh}
+                  />
+                );
+              }
+            })}
             {filerPicUrls.length > 7 ? (
               <div
                 className={styles.moreEvent}
@@ -190,7 +194,7 @@ export default function About({ vh, state }) {
                 >
                   查看更多
                 </div>
-                <div style={{ cursor: "pointer" }}>
+                <div className={styles.arrow} style={{ cursor: "pointer" }}>
                   <Image src={arrow2} />
                 </div>
               </div>
@@ -211,12 +215,12 @@ export default function About({ vh, state }) {
                 红岩网校工作站发展21年以来，已经逐步建立起了成熟的人才培养体系和课程制度。
                 本着相互学习，互相成长的初心，目前我们的课程将在官方B站号进行上传，感兴趣的同学可以进行查看和学习。
               </div>
-              <button
+              <div
                 className={styles.btn + " font5"}
                 style={{ height: 48 * vh }}
               >
                 立即查看
-              </button>
+              </div>
             </div>
             <div className={styles.r}>
               <Image src={r} layout="fill" />

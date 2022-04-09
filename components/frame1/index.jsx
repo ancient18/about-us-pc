@@ -23,10 +23,6 @@ let app,
   $slider,
   current = 0;
 
-
-
-
-
 export default function Frame1({ vh, slider }) {
   const $ban = useRef(null);
   const $yes = useRef(null);

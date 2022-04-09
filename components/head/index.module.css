@@ -5,6 +5,8 @@
   width: 100%;
   position: absolute;
   transition: all 0.3s;
+  font-weight: 400 !important;
+  font-family: Regular PingFang SC !important;
 }
 .logo {
   width: 243px;
