@@ -44,13 +44,13 @@ export default function Index({ vh }) {
                     bottom: 24 * vh,
                 }}>{val.length}/400</div>
             </div>
-                <button
+                <div
                     className={styles.btn2 + " font5"}
                     style={{ height: 48 * vh, }}
                     onClick={handleSubmit}
                 >
                     提交问题
-                </button></>}
+                </div></>}
 
         </div>
     )

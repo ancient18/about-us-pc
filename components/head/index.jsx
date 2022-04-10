@@ -4,13 +4,13 @@ import logo1 from "../../assets/img/logo1.png";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import search from "../../assets/img/search.png";
 import search1 from "../../assets/img/search2.png";
 
 let open = true;
 export default function Head({ vh, showModel }) {
-
+  const $head = useRef(null);
   const router = useRouter();
   const [mode, setMode] = useState("default");
   function whell(e) {
@@ -32,6 +32,13 @@ export default function Head({ vh, showModel }) {
   const handleSearch = () => {
     showModel();
   };
+
+  useEffect(() => {
+    $head.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty("width", "100%", "important");
+      item.style.setProperty("height", "100%", "important");
+    });
+  })
 
 
   useEffect(() => {
@@ -57,6 +64,7 @@ export default function Head({ vh, showModel }) {
         onMouseLeave={() => {
           setMode("default");
         }}
+        ref={$head}
       >
         <div className={styles.logo}>
           <Image src={mode === "default" ? logo : logo1} priority></Image>
@@ -86,6 +94,7 @@ export default function Head({ vh, showModel }) {
         backgroundColor: "#fff",
         position: router.route === "/about-us" ? "absolute" : "relative",
       }}
+      ref={$head}
     >
       <div className={styles.logo}>
         <Image src={logo1} priority></Image>

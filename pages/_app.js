@@ -47,6 +47,10 @@ function MyApp({ Component, pageProps }) {
     window.onresize = () => {
       $setVh(body.clientHeight / 720);
     };
+    model.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty("width", "100%", "important");
+      item.style.setProperty("height", "100%", "important");
+    });
   }, []);
   useEffect(() => {
     if (route !== "/about-us") {

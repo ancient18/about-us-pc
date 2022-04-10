@@ -44,12 +44,13 @@
   height: 21px;
   background-color: #ff406e;
   z-index: 0;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .item {
   width: 384px;
+  height: 194px !important;
   background: #ffffff;
   box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
   border-radius: 32px;
@@ -66,6 +67,11 @@
   -webkit-line-clamp: 4;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Regular PingFang SC;
+  color: #000000;
+  line-height: 24px;
 }
 
 .p {
@@ -101,36 +107,46 @@
 
 .btn {
   outline: none;
-  color: #ff406e;
+  color: #ff406e !important;
   background: transparent;
-  border-color: #ff406e;
+  border-color: #ff406e !important;
   width: 128px;
-  border-radius: 5px;
+  height: 50px !important;
+  line-height: 47px;
+  border-radius: 10px;
+  border: 1.5px solid;
+  text-align: center;
   cursor: pointer;
   position: absolute;
   left: 50%;
   margin-left: -64px;
 }
 
+.btn:hover {
+  color: #fff !important;
+  background: #ff406e;
+}
+
 .btn2 {
   outline: none;
-  color: #ff406e;
+  color: #ff406e !important;
   background: transparent;
-  border-color: #ff406e;
+  border-color: #ff406e !important;
   width: 128px;
-  border-radius: 5px;
+  height: 50px !important;
+  line-height: 47px;
+  border-radius: 10px;
+  border: 1.5px solid;
+  text-align: center;
   cursor: pointer;
-  margin: 0 auto;
   position: relative;
   left: 600px;
   transform: translateX(-50%);
 }
 
-.Arrow {
-  font-size: 32px;
-  color: #ff406e;
-  margin-right: 36px;
-  cursor: pointer;
+.btn2:hover {
+  color: #fff !important;
+  background: #ff406e;
 }
 
 .defaultArrow {
@@ -138,6 +154,10 @@
   color: #8b8b8b;
   margin-right: 36px;
   cursor: pointer;
+}
+
+.defaultArrow:hover {
+  color: #ff406e;
 }
 
 .textarea {
@@ -155,4 +175,19 @@
   font-size: small;
   position: absolute;
   right: 36px;
+}
+
+.radius {
+  position:absolute;
+  height: 66px;
+  width: 65.89018249511719px;
+  left: 0px;
+  top: -3px;
+  border-radius: 100%;
+  background: #FE6D3D;
+  z-index: 0;
+}
+
+.tab{
+  position: relative;
 }
