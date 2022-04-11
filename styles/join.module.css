@@ -168,6 +168,7 @@
   border-radius: 32px;
   border-color: #c4c4c4;
   padding: 36px;
+  font-size: 16px !important;
 }
 
 .count {

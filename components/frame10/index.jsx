@@ -51,7 +51,7 @@ let createText = (ctx, text, x, y, number) => {
 
 let random = (minDistance, maxDistance) => {
   const middleWidth = body.clientWidth / 2;
-  const middleHeight = body.clientHeight / 4;
+  const middleHeight = body.clientHeight / 3;
   let x, y;
   while (x = Math.random() * body.clientWidth, y = Math.random() * body.clientHeight) {
     let distance = Math.pow(x - middleWidth, 2) + Math.pow(y - middleHeight, 2)
@@ -76,7 +76,7 @@ let measureText = (ctx2, text) => {
 // 确定x,y的坐标
 let getCoordinate = (vh, size, square) => {
   let x, y;
-  let distance = Math.pow(square.offsetWidth / 2, 2) + Math.pow(square.offsetHeight / 2, 2);
+  let distance = (Math.pow(square.offsetWidth / 2, 2) + Math.pow(square.offsetHeight / 2, 2)) / 2;
 
   if (size === 1) {
     [x, y] = random(5 * distance, 6 * distance)
@@ -199,14 +199,23 @@ export default function Frame10({ vh }) {
           x = res.x;
           y = res.y;
 
+          // x = res.x - width / 2;
+          // y = res.y + height / 2;
+
           createText(ctx2, l, x, y, number[item.location]);
           width = measureText(ctx2, l).width;
           height = measureText(ctx2, l).height;
+
+          // let middleX = x + width / 2;
+          // let middleY = y - height / 2;
 
           while (!checkIsSave(x, y, width, height, vh)) {
             res = getCoordinate(vh, number[item.location], $square.current);
             x = res.x;
             y = res.y;
+
+            // x = res.x - width / 2;
+            // y = res.y + height / 2;
             createText(ctx2, l, x, y, number[item.location]);
             width = measureText(ctx2, l).width;
             height = measureText(ctx2, l).height;
