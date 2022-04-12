@@ -51,16 +51,17 @@ let createText = (ctx, text, x, y, number) => {
 
 let random = (minDistance, maxDistance) => {
   const middleWidth = body.clientWidth / 2;
-  const middleHeight = body.clientHeight / 3;
+  const middleHeight = body.clientHeight / 2;
   let x, y;
   while (x = Math.random() * body.clientWidth, y = Math.random() * body.clientHeight) {
-    let distance = Math.pow(x - middleWidth, 2) + Math.pow(y - middleHeight, 2)
+    let distance = Math.pow(x - middleWidth, 2) / 3 + Math.pow(y - middleHeight, 2)
     if (distance > minDistance && distance < maxDistance) {
       return [x, y];
     }
   }
 
 }
+
 
 // 测量函数
 let measureText = (ctx2, text) => {
@@ -79,13 +80,13 @@ let getCoordinate = (vh, size, square) => {
   let distance = (Math.pow(square.offsetWidth / 2, 2) + Math.pow(square.offsetHeight / 2, 2)) / 2;
 
   if (size === 1) {
-    [x, y] = random(5 * distance, 6 * distance)
+    [x, y] = random(4* distance,5 * distance)
   } else if (size === 2 || size === 3) {
-    [x, y] = random(4 * distance, 5 * distance)
+    [x, y] = random(2 * distance, 3* distance)
   } else if (size === 4 || size === 5) {
-    [x, y] = random(3 * distance, 4 * distance)
-  } else {
     [x, y] = random(distance, 2 * distance)
+  } else {
+    [x, y] = random(0, distance)
   }
   // let x = random(body.clientWidth - 150);
   // let y = random(600 * vh);
@@ -96,25 +97,25 @@ let getCoordinate = (vh, size, square) => {
 // 碰撞
 let checkIsSave = (x, y, width, height, vh) => {
   let save = true;
-  if (x < 100 * vh || x + width > body.clientWidth - 200 || y > 580 * vh || y - height < 100 * vh) {
+  if (x - width / 2 < 100 * vh || x + width / 2 > body.clientWidth - 200 || y + height / 2 > 580 * vh || y - height / 2 < 100 * vh) {
     console.log(x, y, width, height, vh);
     return false;
   }
 
   // 防止字重叠在一起
   let c1 = {
-    x: x + width / 2,
-    y: y - height / 2,
+    x,
+    y
   };
   boundary.forEach((item) => {
     const { x, y, width: w, height: h } = item;
     let c2 = {
-      x: x + w / 2,
-      y: y - h / 2,
+      x,
+      y
     };
     if (
-      Math.abs(c1.x - c2.x) <= (w + width) / 1.5 &&
-      Math.abs(c1.y - c2.y) <= (h + height) / 1.5
+      Math.abs(c1.x - c2.x) <= (w + width)/1.2 &&
+      Math.abs(c1.y - c2.y) <= (h + height)/1.2
     ) {
       save = false;
     }
@@ -196,29 +197,33 @@ export default function Frame10({ vh }) {
           let width, height, x, y, res;
 
           res = getCoordinate(vh, number[item.location], $square.current);
-          x = res.x;
-          y = res.y;
+          // x = res.x;
+          // y = res.y;
 
-          // x = res.x - width / 2;
-          // y = res.y + height / 2;
+
 
           createText(ctx2, l, x, y, number[item.location]);
           width = measureText(ctx2, l).width;
           height = measureText(ctx2, l).height;
+
+
+          x = res.x - width / 2;
+          y = res.y + height / 2;
 
           // let middleX = x + width / 2;
           // let middleY = y - height / 2;
 
           while (!checkIsSave(x, y, width, height, vh)) {
             res = getCoordinate(vh, number[item.location], $square.current);
-            x = res.x;
-            y = res.y;
+            // x = res.x;
+            // y = res.y;
 
-            // x = res.x - width / 2;
-            // y = res.y + height / 2;
             createText(ctx2, l, x, y, number[item.location]);
             width = measureText(ctx2, l).width;
             height = measureText(ctx2, l).height;
+
+            x = res.x - width / 2;
+            y = res.y + height / 2;
           }
           createText(ctx, l, x, y, number[item.location]);
           boundary.push({
@@ -228,14 +233,11 @@ export default function Frame10({ vh }) {
             height,
             l
           });
-
         }
       });
 
       // 判断鼠标是否已经进入文本区域位置，让鼠标进入区域只出现一次动画
       let moveFlag = false;
-
-
 
       canvasRef.current.addEventListener("mousemove", (e) => {
         console.log(e);

@@ -37,6 +37,10 @@ export default function Frame1({ vh, slider }) {
   // 记录卡片滑动次数
   let detailCount = 1;
 
+  useEffect(() => {
+
+  })
+
 
   const fn = throttle((e) => {
     if (e.wheelDelta < 0) {
@@ -101,7 +105,8 @@ export default function Frame1({ vh, slider }) {
       }
       current--;
     }
-    $slider.slickGoTo(current);
+
+    slider.current.slickGoTo(current);
   }, 800);
 
 

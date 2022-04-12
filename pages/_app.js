@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
     setHasSearch(false);
     setRes([]);
     ipt.current.value = "";
-    if (app.current.style.overflow !== "hidden") {
+    if (app.current.style.overflow === "hidden") {
       app.current.style.overflow = "hidden auto";
     }
 
