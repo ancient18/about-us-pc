@@ -6,6 +6,7 @@ import { getCard, getQAndA } from "../../api";
 import Icon from "../../components/Icon";
 import Tab from "../../components/tab";
 import styles from "../../styles/join.module.css";
+import blurWEB from "../../assets/网页动效/blurWEB.png"
 
 const settings = {
   dots: false,
@@ -45,6 +46,15 @@ export default function Index({ vh, card, qAndA }) {
   const [select, setSelect] = useState(0);
   const [$select, $setSelect] = useState(0);
   const $slider = useRef(null);
+  const $blurImg = useRef(null);
+
+  useEffect(() => {
+    $blurImg.current.querySelectorAll("span").forEach((item) => {
+      item.style.setProperty('width', '100%', 'important');
+      item.style.setProperty('height', '100%', 'important');
+    })
+
+  }, [])
   useEffect(() => {
     if ($select) {
       $slider.current.slickGoTo(0);
@@ -100,6 +110,10 @@ export default function Index({ vh, card, qAndA }) {
           className={styles.tab_container}
           style={{ paddingTop: 64 * vh, height: 476 * vh }}
         >
+          <div className={styles.img} ref={$blurImg}>
+            <Image src={blurWEB} ></Image>
+          </div>
+
           <div>
             <Slider {...settings} ref={$slider}>
               {filterData.map((item, index) => {
