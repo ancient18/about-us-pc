@@ -9,9 +9,13 @@ import ilike from '../assets/img/article/Union (1).png'
 import see from '../assets/img/article/Frame 138.png'
 import share from '../assets/img/article/Frame 146.png'
 import Image from "next/image";
-
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { okaidia as dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Prism } from 'react-syntax-highlighter'
+import { message } from 'antd';
+import 'antd/dist/antd.css';
+
+
 function parseTime(time) {
   let t = dayjs(time)
   return t.year() + '.' + t.month() + '.' + t.date()
@@ -20,7 +24,9 @@ function parseTime(time) {
 let add = 0
 
 export default function Article({ vh }) {
+
   const router = useRouter();
+  const [href, setHref] = useState("")
   const [isLike, setIslike] = useState(false)
   const [articleInfo, setArticleInfo] = useState({
     content: "",
@@ -32,6 +38,7 @@ export default function Article({ vh }) {
   });
   const [loading, setLoadingState] = useState(true);
   useEffect(() => {
+    setHref(window.location.href);
 
     const { aid } = router.query;
     if (!aid) {
@@ -44,6 +51,7 @@ export default function Article({ vh }) {
       }
     });
   }, [router.query]);
+
 
   useLayoutEffect(() => {
     const { aid } = router.query;
@@ -85,6 +93,8 @@ export default function Article({ vh }) {
           <div>{label_type}</div>
         </div>
         <div style={{ paddingBottom: 50 * vh }}>
+
+
           <ReactMarkdown components={{
             code({ node, inline, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || '')
@@ -121,11 +131,14 @@ export default function Article({ vh }) {
             localStorage.setItem('articleArr', JSON.stringify(atr))
           }}><div className={styles.heart}><Image src={isLike ? ilike : dlike} /></div><div>{(like + add) || 0}</div></div>
           <div><div className={styles.see}><Image src={see} /></div><div>{times}</div></div>
-          <div><div className={styles.share}><Image src={share} /></div><div>分享</div></div>
+          <div><div className={styles.share}><Image src={share} /></div>
+            <CopyToClipboard text={href} onCopy={() => { message.success('复制网页链接成功'); }}>
+              <span>分享</span>
+            </CopyToClipboard></div>
         </div>
         <h1 style={{
           clear: 'both'
         }} />
       </div>
-    </div>)
+    </div >)
 }
