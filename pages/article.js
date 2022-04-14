@@ -12,6 +12,9 @@ import Image from "next/image";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { okaidia as dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Prism } from 'react-syntax-highlighter'
+import marked from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/vs2015.css'
 import { message } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -37,6 +40,40 @@ export default function Article({ vh }) {
     label_type: ""
   });
   const [loading, setLoadingState] = useState(true);
+
+  // const renderer = new marked.Renderer();
+
+  // marked.setOptions({
+  //   renderer: renderer,
+  //   gfm: true,
+  //   pedantic: false,
+  //   sanitize: false,
+  //   tables: true,
+  //   breaks: false,
+  //   smartLists: true,
+  //   smartypants: false,
+  //   highlight: function (code) {
+  //     return hljs.highlightAuto(code).value;
+  //   }
+  // });
+
+  useEffect(() => {
+    // 配置 highlight.js
+    hljs.configure({
+      // 忽略未经转义的 HTML 字符
+      ignoreUnescapedHTML: true
+    })
+    // 获取到内容中所有的code标签
+    const codes = document.querySelectorAll('code')
+    console.log(codes);
+    codes.forEach((el) => {
+
+      // 让code进行高亮
+      // el.innerHTML = marked(el.innerHTML)
+      hljs.highlightElement(el)
+    })
+  }, [loading])
+
   useEffect(() => {
     setHref(window.location.href);
 
@@ -45,13 +82,13 @@ export default function Article({ vh }) {
       return;
     }
     getArticleInfo(aid).then((res) => {
+      console.log(res);
       if (res) {
         setArticleInfo(res.essay);
         setLoadingState(false);
       }
     });
   }, [router.query]);
-
 
   useLayoutEffect(() => {
     const { aid } = router.query;
