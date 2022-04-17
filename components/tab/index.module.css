@@ -10,6 +10,7 @@
   padding: 16px 0;
   cursor: pointer;
   user-select: none;
+  z-index: 1;
 }
 .tab.select {
   font-weight: 700 !important;

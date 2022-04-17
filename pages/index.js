@@ -8,6 +8,7 @@ import arrow2 from "../assets/img/frame4/arrow.png";
 import yinhao from "../assets/img/about/Vector.png";
 import { useState, useEffect, useRef } from "react";
 import Event from "../components/Event";
+import Link from "next/link";
 import { getBannar, getCard, getEasyInfo } from "../api";
 const types = ["全部", "活动", "技术分享"];
 
@@ -51,6 +52,7 @@ export default function About({ vh, state }) {
     else if (type === "活动") return item.type === type;
     else return item.type !== "活动";
   });
+
 
   const settings = {
     dots: true,
@@ -135,7 +137,7 @@ export default function About({ vh, state }) {
             ref={$box}
           >
             {filerPicUrls.map((item, index) => {
-              if (index > 4 && index < 12) {
+              if (index < 7) {
                 return (
                   <Event
                     {...item}
@@ -152,9 +154,11 @@ export default function About({ vh, state }) {
                 className={styles.moreEvent}
                 style={{ height: 119 * vh, marginBottom: 28 * vh }}
               >
-                <div className="font4" style={{ marginTop: 39 * vh }}>
-                  查看更多
-                </div>
+                <Link href={'/activitys'}>
+                  <div className="font4" style={{ marginTop: 39 * vh }}>
+                    查看更多
+                  </div>
+                </Link>
                 <div className={styles.arrow} style={{ top: 75 * vh }}>
                   <Image src={arrow} layout="fill" />
                 </div>
@@ -188,12 +192,14 @@ export default function About({ vh, state }) {
             <div style={{ top: 103 * vh }}></div>
             {card.length > 3 ? (
               <div style={{ top: 103 * vh }}>
-                <div
-                  className="font4"
-                  style={{ marginBottom: 12 * vh, cursor: "pointer" }}
-                >
-                  查看更多
-                </div>
+                <Link href={'/products'}>
+                  <div
+                    className="font4"
+                    style={{ marginBottom: 12 * vh, cursor: "pointer" }}
+                  >
+                    查看更多
+                  </div>
+                </Link>
                 <div className={styles.arrow} style={{ cursor: "pointer" }}>
                   <Image src={arrow2} />
                 </div>
@@ -218,6 +224,7 @@ export default function About({ vh, state }) {
               <div
                 className={styles.btn + " font5"}
                 style={{ height: 48 * vh }}
+                onClick={() => { window.location.href = "https://space.bilibili.com/1504551074" }}
               >
                 立即查看
               </div>

@@ -111,6 +111,7 @@
   flex-wrap: wrap;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 .tag {
@@ -136,6 +137,7 @@
   box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
   border-radius: 32px;
   padding-left: 40px;
+  cursor: pointer;
 }
 
 .moreEvent > div:nth-child(1) {
@@ -310,3 +312,4 @@
   height: 119px;
   width: 125.88426208496094px;
 }
+

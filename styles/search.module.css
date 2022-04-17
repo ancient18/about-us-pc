@@ -61,7 +61,7 @@
 }
 .close {
   width: 18px;
-  height:18px;
+  height: 18px;
   position: absolute;
   right: 240px;
   cursor: pointer;
@@ -81,12 +81,14 @@
 
 .p_box {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
-  padding: 0 120px;
+  padding: 0 100px;
 }
 
 .p_box > div {
+  width: 282px;
+  height: 295px !important;
   margin-bottom: 24px;
 }
 

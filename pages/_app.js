@@ -13,7 +13,6 @@ import anime from "animejs";
 import throttle from "../util/throttle";
 import { search as $search } from "../api";
 import Event from "../components/Event";
-
 import SEOHead from "next/head";
 
 const types = ["全部", "活动", "技术分享"];
@@ -73,7 +72,7 @@ function MyApp({ Component, pageProps }) {
     setHasSearch(false);
     setRes([]);
     ipt.current.value = "";
-    if (app.current.style.overflow === "hidden") {
+    if (app.current.style.overflow === "hidden" && route !== "/about-us") {
       app.current.style.overflow = "hidden auto";
     }
 
@@ -154,7 +153,7 @@ function MyApp({ Component, pageProps }) {
             ></div>
           </div>
           <div className={styles.search_res}>
-            {hasSearch && !filerPicUrls.length ? (
+            {hasSearch && !res.length ? (
               <div
                 style={{ top: 170 * vh }}
                 className={styles.noRes + " font4 flex-center-center"}
@@ -164,26 +163,23 @@ function MyApp({ Component, pageProps }) {
               </div>
             ) : (
               <>
-                {hasSearch && filerPicUrls.length ? (
-                  <div
-                    className={styles.types + " font2"}
-                    style={{ height: 34 * vh, marginBottom: 48 * vh }}
-                  >
-                    {types.map((item, i) => {
-                      return (
-                        <div
-                          className={item === type ? styles.select : ""}
-                          key={i}
-                          onClick={() => setType(item)}
-                        >
-                          {item}
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  ""
-                )}
+                <div
+                  className={styles.types + " font2"}
+                  style={{ height: 34 * vh, marginBottom: 48 * vh }}
+                >
+                  {types.map((item, i) => {
+                    return (
+                      <div
+                        className={item === type ? styles.select : ""}
+                        key={i}
+                        onClick={() => setType(item)}
+                      >
+                        {hasSearch ? item : null}
+                      </div>
+                    );
+                  })}
+                </div>
+
                 <div className={styles.p_box}>
                   {filerPicUrls.map((item, index) => {
                     return (
