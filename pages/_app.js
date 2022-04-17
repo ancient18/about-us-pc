@@ -140,7 +140,10 @@ function MyApp({ Component, pageProps }) {
                 onClick={() => {
                   setHasSearch(true);
                   $search(ipt.current.value).then((res) => {
-                    setRes(res.essays);
+                    if (res) {
+                      setRes(res.essays);
+                    }
+
                   });
                 }}
               >

@@ -7,7 +7,9 @@ export default function Index({ vh }) {
     const [handle, setHandle] = useState(false)
     function handleSubmit() {
         submit(val).then(res => {
+            console.log(res);
             if (res.info === 'success') {
+                console.log("success");
                 setHandle(true)
             }
         })

@@ -29,6 +29,21 @@ const frames = [
  * about-us首页
  */
 
+const count = (left, right) => {
+  let i = 0;
+  return (left, right) => {
+    if (left) {
+      i++;
+    }
+
+    if (right) {
+      i--;
+    }
+    return i;
+  };
+}
+
+
 export default function Home({ vh }) {
   const slider = useRef(null);
 

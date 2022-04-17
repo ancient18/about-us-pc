@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
-export default function Tab({ dataSource, select,onChange }) {
+export default function Tab({ dataSource, select, onChange }) {
   const [_select, setSelect] = useState(select);
-  useEffect(()=>{
+  useEffect(() => {
     onChange(_select)
-  },[_select])
+  }, [_select])
   return (
     <div className={styles.tab_box}>
       {dataSource.map((item, index) => (
@@ -16,11 +16,14 @@ export default function Tab({ dataSource, select,onChange }) {
               ? styles.tab + " " + styles.select + " font5"
               : styles.tab + " font5"
           }
-          onClick={() =>{ setSelect(index) }}
+          onClick={() => { setSelect(index) }}
         >
-          {item}
+          {_select === index ? <div className={styles.radius} /> : null}
+          <div className={styles.item}>{item}</div>
         </div>
       ))}
+
+
     </div>
   );
 }

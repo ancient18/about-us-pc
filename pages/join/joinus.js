@@ -105,7 +105,7 @@ export default function Index({ vh, card, qAndA }) {
             setSelect(s);
           }}
         />
-        <div className={styles.radius} />
+        
         <div
           className={styles.tab_container}
           style={{ paddingTop: 64 * vh, height: 476 * vh }}

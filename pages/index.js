@@ -4,7 +4,7 @@ import Image from "next/image";
 import bolikuai from "../assets/img/frame6/square.png";
 import arrow from "../assets/img/about/arrow.png";
 import r from "../assets/img/about/r.png";
-import arrow2 from "../assets/img/frame4/arrow.png";
+import arrow2 from "../assets/img/frame4/arrow2.png";
 import yinhao from "../assets/img/about/Vector.png";
 import { useState, useEffect, useRef } from "react";
 import Event from "../components/Event";
@@ -191,19 +191,20 @@ export default function About({ vh, state }) {
           <div className={styles.box3} style={{ height: 165 * vh }}>
             <div style={{ top: 103 * vh }}></div>
             {card.length > 3 ? (
-              <div style={{ top: 103 * vh }}>
-                <Link href={'/products'}>
+              <Link href={'/products'}>
+                <div style={{ top: 103 * vh }}>
                   <div
                     className="font4"
                     style={{ marginBottom: 12 * vh, cursor: "pointer" }}
                   >
                     查看更多
                   </div>
-                </Link>
-                <div className={styles.arrow} style={{ cursor: "pointer" }}>
-                  <Image src={arrow2} />
+
+                  <div className={styles.arrow} style={{ cursor: "pointer" }}>
+                    <Image src={arrow2} />
+                  </div>
                 </div>
-              </div>
+              </Link>
             ) : (
               ""
             )}

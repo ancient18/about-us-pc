@@ -106,7 +106,7 @@ export default function Frame1({ vh, slider }) {
       current--;
     }
 
-    slider.current.slickGoTo(current);
+    slider.current?.slickGoTo(current);
   }, 800);
 
 

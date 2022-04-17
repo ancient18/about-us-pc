@@ -178,16 +178,7 @@
   right: 36px;
 }
 
-.radius {
-  position: absolute;
-  height: 66px;
-  width: 65.89018249511719px;
-  left: 0px;
-  top: -3px;
-  border-radius: 100%;
-  background: rgba(254, 109, 61, 0.9);
-  z-index: 0;
-}
+
 
 .tab {
   position: relative;

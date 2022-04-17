@@ -202,7 +202,7 @@ export default function Frame6({ vh }) {
 
             anime({
               targets: [$yunwei.current, $web.current],
-              translateX: 235 * mutiple,
+              translateX: 175 * mutiple,
               translateY: -114 * mutiple,
               duration: 2000
             })
@@ -229,8 +229,14 @@ export default function Frame6({ vh }) {
               duration: 2000
             })
             anime({
-              targets: [$fragment2.current, $web.current],
+              targets: $fragment2.current,
               translateX: -240 * mutiple,
+              translateY: -114 * mutiple,
+              duration: 2000
+            })
+            anime({
+              targets: $web.current,
+              translateX: -170 * mutiple,
               translateY: -114 * mutiple,
               duration: 2000
             })
@@ -300,7 +306,7 @@ export default function Frame6({ vh }) {
 
             anime({
               targets: [$web.current, $fragment2.current],
-              translateX: -250 * mutiple,
+              translateX: -185 * mutiple,
               translateY: 0,
               duration: 2000
             })

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { getBannar, getCard, getEasyInfo } from "../api";
-import Event from "../components/Event";
+import r from "../assets/img/about/r.png";
 import styles from "../styles/product.module.css";
 import Image from "next/image";
 
@@ -11,12 +11,12 @@ const types = ["全部", "活动", "技术分享"];
 
 const Product = ({ picUrl, title, article, vh }) => (
 	<div className={styles.product} style={{ height: 134 * vh }}>
-		<div className={styles.pic2} style={{ top: 24 * vh }}>
-			<Image src={picUrl} layout="fill" />
+		<div className={styles.pic2} style={{ top: 40 * vh }}>
+			<Image src={picUrl === "" ? r : picUrl} layout="fill" />
 		</div>
 		<div
 			className="font5"
-			style={{ marginTop: 31 * vh, color: "#141414", marginBottom: 4 * vh }}
+			style={{ marginTop: 31 * vh, color: "#141414", marginBottom: 20 * vh }}
 			title={title}
 		>
 			{title}
@@ -70,7 +70,7 @@ export default function Products({ vh, state }) {
 					className={styles.event_box}
 					style={{ marginTop: 48 * vh }}
 				>
-					{card.slice(0, 6).map((item, index) => (
+					{card.map((item, index) => (
 						<Product
 							picUrl={item.pic}
 							title={item.little_title}
