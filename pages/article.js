@@ -161,7 +161,7 @@ export default function Article({ vh }) {
                 }
                 item.isLike = !item.isLike
                 setIslike(item.isLike)
-                $setIslike(aid, item.isLike ? 'ture' : 'false')
+                $setIslike(aid, item.isLike ? true : false)
               }
               return item
             })

@@ -32,14 +32,20 @@ export const getArticleInfo = async (id) => {
 };
 
 export const setIslike = async (id, like) => {
-  let form = new FormData()
-  form.append('id', id)
-  form.append('like', like)
-  const p = await $('/essay/likes', {
+  // let form = new FormData()
+  // form.append('id', id)
+  // form.append('like', like)
+  console.log(id,like);
+  const p = await fetch(`${baseUrl}/essay/likes`, {
     method: 'post',
-    body: form
+    body: JSON.stringify({
+      "id": id,
+      "like": like
+    }),
+    headers: { 'Content-Type': 'application/json' }
   })
-  return p
+  const data = p.json();
+  return data;
 }
 
 export const getQAndA = async () => {
@@ -50,11 +56,12 @@ export const getQAndA = async () => {
 export const submit = async (content) => {
   let form = new FormData()
   form.append('content', content)
-  const p = await $('/feedback', {
-    method: 'post',
+  const p = await fetch(`${baseUrl}/feedback`, {
+    method: 'put',
     body: form
   })
-  return p
+  const data = await p.json();
+  return data;
 }
 
 export const search = async (content) => {

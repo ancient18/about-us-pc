@@ -9,7 +9,7 @@ export default function Index({ vh }) {
         submit(val).then(res => {
             console.log(res);
             if (res.info === 'success') {
-                console.log("success");
+                // console.log("success");
                 setHandle(true)
             }
         })
