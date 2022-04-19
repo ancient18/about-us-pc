@@ -1,5 +1,6 @@
 import styles from "./index.module.css";
 import square from "../../assets/网页动效/单次循环.webp";
+import square1 from "../../assets/网页动效/单次循环.png";
 import chanpin from "../../assets/网页动效/产品.webp";
 import shijue from "../../assets/网页动效/视觉.webp";
 import yidong from "../../assets/网页动效/移动.webp";
@@ -51,7 +52,6 @@ export default function Frame6({ vh }) {
       }
 
       item.addEventListener("mouseover", () => {
-        console.log(item);
         switch (item.className) {
           case "web":
             item.src = web.src;
@@ -305,8 +305,15 @@ export default function Frame6({ vh }) {
             })
 
             anime({
-              targets: [$web.current, $fragment2.current],
+              targets: $web.current,
               translateX: -185 * mutiple,
+              translateY: 0,
+              duration: 2000
+            })
+
+            anime({
+              targets: $fragment2.current,
+              translateX: -255 * mutiple,
               translateY: 0,
               duration: 2000
             })
@@ -408,7 +415,6 @@ export default function Frame6({ vh }) {
           </div>
           <div className={styles.title3 + " font1"}>“方寸间世界的创造者“</div>
         </div>
-
       </div>
 
       <div className={styles.container}>

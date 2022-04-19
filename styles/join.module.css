@@ -84,11 +84,15 @@
   position: relative;
   width: 1200px;
   border-radius: 32px;
-  border-top-left-radius: 0;
+
   box-shadow: 6px 8px 16px rgba(143, 114, 114, 0.1);
   padding: 0 88px;
   z-index: 1;
   background-color: #fff;
+}
+
+.tab_select {
+  border-top-left-radius: 0;
 }
 
 .tab_container > div:nth-child(1) {
@@ -177,8 +181,6 @@
   position: absolute;
   right: 36px;
 }
-
-
 
 .tab {
   position: relative;

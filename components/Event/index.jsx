@@ -6,14 +6,14 @@ import r from "../../assets/img/about/r.png";
 const style = (index, marginBottom, vh) =>
   (index + 1) % 4 === 0
     ? {
-        marginRight: 0,
-        marginBottom,
-        height: 295 * vh,
-      }
+      marginRight: 0,
+      marginBottom,
+      height: 295 * vh,
+    }
     : {
-        marginBottom,
-        height: 295 * vh,
-      };
+      marginBottom,
+      height: 295 * vh,
+    };
 
 const Event = ({
   pic,

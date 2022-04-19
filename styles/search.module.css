@@ -47,10 +47,10 @@
   margin: 0 34px;
 }
 .search_icon {
-  width: 19px;
-  height: 19px;
+  width: 25px;
+  height: 25px;
   position: absolute;
-  right: 34px;
+  right: 50px;
   cursor: pointer;
   top: 7px;
 }

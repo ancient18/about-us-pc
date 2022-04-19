@@ -48,6 +48,13 @@
   width: 86px;
   height: 86px;
   right: 36px;
+  background-color: white;
+  border-radius: 10px;
+  top: 133px !important;
+}
+
+.pic2 span {
+  margin: 7px !important;
 }
 
 .product {
@@ -63,7 +70,6 @@
       #ffffff 55.45%
     ),
     url(../assets/img/about/back.png) center no-repeat;
-  border-radius: 32px;
   background-size: 100% 100%;
   margin: 10px;
 }

@@ -15,7 +15,7 @@ import { search as $search } from "../api";
 import Event from "../components/Event";
 import SEOHead from "next/head";
 
-const types = ["全部", "活动", "技术分享"];
+const types = ["全部", "活动", "技术分享", "产品"];
 
 function MyApp({ Component, pageProps }) {
   const ipt = useRef(null);
@@ -52,6 +52,8 @@ function MyApp({ Component, pageProps }) {
     });
   }, []);
   useEffect(() => {
+
+    toClose()
     if (route !== "/about-us") {
       app.current.style.overflow = "hidden auto";
     } else {

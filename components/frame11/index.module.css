@@ -11,12 +11,12 @@
 }
 .y1,
 .y2 {
+  width: 51px !important;
+  height: 44.09px !important;
   position: absolute;
   width: 51px;
 }
 .y1 {
-  width:51px;
-  height:44.09px;
   left: 120px;
 }
 .y2 {

@@ -105,9 +105,8 @@ export default function Frame1({ vh, slider }) {
       }
       current--;
     }
-
     slider.current?.slickGoTo(current);
-  }, 800);
+  }, 1000);
 
 
   const wheel = (e) => {

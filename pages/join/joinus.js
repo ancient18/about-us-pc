@@ -105,9 +105,9 @@ export default function Index({ vh, card, qAndA }) {
             setSelect(s);
           }}
         />
-        
+
         <div
-          className={styles.tab_container}
+          className={select !== 0 ? styles.tab_container : `${styles.tab_container} ${styles.tab_select}`}
           style={{ paddingTop: 64 * vh, height: 476 * vh }}
         >
           <div className={styles.img} ref={$blurImg}>

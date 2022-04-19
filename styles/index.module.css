@@ -1,9 +1,11 @@
 .box {
+  height: 600px !important;
   position: relative;
   overflow: hidden;
 }
 .item {
   width: 1440px;
+  height: 600px !important;
   position: relative;
 }
 
@@ -158,6 +160,12 @@
   width: 86px;
   height: 86px;
   right: 36px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.pic2 span {
+  margin: 7px !important;
 }
 
 .product {
@@ -309,7 +317,17 @@
 }
 
 .bolikuai {
-  height: 119px;
-  width: 125.88426208496094px;
+  height: 169px;
+  width: 255.88px !important;
+  left: 20px;
 }
 
+/* .bolikuai img { */
+  /* width: 300px !important;
+  height: 150px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  min-height: 150px !important;
+  max-height: 150px !important; */
+
+/* } */

@@ -3,7 +3,8 @@
   color: #141414;
   z-index: 0;
   position: relative;
-  height: 60px;
+  height: 66px;
+  
 }
 .tab {
   position: relative;
@@ -12,7 +13,9 @@
   padding: 16px 0;
   cursor: pointer;
   user-select: none;
+  overflow: hidden;
 }
+
 .tab.select {
   font-weight: 700 !important;
   padding: 16px 24px;
@@ -39,13 +42,13 @@
   z-index: 1;
 }
 
-
-
 @keyframes scale {
   0% {
-    transform: scale(0);
+    top: -100px;
+    left: -100px;
   }
   100% {
-    transform: scale(1);
+    top: 0px;
+    left: 0px;
   }
 }

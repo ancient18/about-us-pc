@@ -1,7 +1,7 @@
 import styles from "../styles/index.module.css";
 import Slider from "react-slick";
 import Image from "next/image";
-import bolikuai from "../assets/img/frame6/square.png";
+import bolikuai from "../assets/网页动效/单次循环.webp";
 import arrow from "../assets/img/about/arrow.png";
 import r from "../assets/img/about/r.png";
 import arrow2 from "../assets/img/frame4/arrow2.png";
@@ -47,11 +47,16 @@ export default function About({ vh, state }) {
   const [type, setType] = useState("全部");
   const { bannar, easyInfo, card } = state;
   const $box = useRef(null);
+  const $bolikuai = useRef(null);
   const filerPicUrls = easyInfo.filter((item) => {
     if (type === "全部") return true;
     else if (type === "活动") return item.type === type;
     else return item.type !== "活动";
   });
+
+  const bolikuaiHover = () => {
+    $bolikuai.current.querySelector("img").src = bolikuai;
+  }
 
 
   const settings = {
@@ -70,6 +75,8 @@ export default function About({ vh, state }) {
   };
 
   useEffect(() => {
+    $bolikuai.current.querySelector("span").style.width = "100%";
+    $bolikuai.current.querySelector("span").style.height = "100%";
     $box.current.querySelectorAll("img").forEach((item) => {
       item.style.transition = "all 0.6s linear";
     });
@@ -162,8 +169,9 @@ export default function About({ vh, state }) {
                 <div className={styles.arrow} style={{ top: 75 * vh }}>
                   <Image src={arrow} layout="fill" />
                 </div>
-                <div className={styles.bolikuai} style={{ top: -49 * vh }}>
+                <div className={styles.bolikuai} style={{ top: -49 * vh }} ref={$bolikuai} onMouseEnter={bolikuaiHover}>
                   <Image src={bolikuai} layout="fill" />
+                  {/* <img src={bolikuai.src} /> */}
                 </div>
               </div>
             ) : (
@@ -191,20 +199,21 @@ export default function About({ vh, state }) {
           <div className={styles.box3} style={{ height: 165 * vh }}>
             <div style={{ top: 103 * vh }}></div>
             {card.length > 3 ? (
-              <Link href={'/products'}>
-                <div style={{ top: 103 * vh }}>
+
+              <div style={{ top: 103 * vh }}>
+                <Link href={'/products'}>
                   <div
                     className="font4"
-                    style={{ marginBottom: 12 * vh, cursor: "pointer" }}
+                    style={{ marginBottom: 12 * vh }}
                   >
                     查看更多
                   </div>
-
-                  <div className={styles.arrow} style={{ cursor: "pointer" }}>
-                    <Image src={arrow2} />
-                  </div>
+                </Link>
+                <div className={styles.arrow} style={{ cursor: "pointer" }}>
+                  <Image src={arrow2} />
                 </div>
-              </Link>
+              </div>
+
             ) : (
               ""
             )}
@@ -225,7 +234,10 @@ export default function About({ vh, state }) {
               <div
                 className={styles.btn + " font5"}
                 style={{ height: 48 * vh }}
-                onClick={() => { window.location.href = "https://space.bilibili.com/1504551074" }}
+                onClick={() => {
+                  const w = window.open('about:blank');
+                  w.location.href = "https://space.bilibili.com/1504551074"
+                }}
               >
                 立即查看
               </div>

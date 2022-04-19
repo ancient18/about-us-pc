@@ -3,7 +3,7 @@
   z-index: 1;
   justify-content: space-between !important;
   width: 100%;
-  position: absolute;
+  position: fixed;
   transition: all 0.3s;
   font-weight: 400 !important;
   font-family: Regular PingFang SC !important;
@@ -25,4 +25,9 @@
 .search {
   width: 19px;
   height: 19px;
+}
+
+.bottom {
+  line-height: 10px;
+  border-bottom: 4px solid #ff406e;
 }

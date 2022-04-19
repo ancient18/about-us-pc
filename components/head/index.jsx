@@ -71,13 +71,13 @@ export default function Head({ vh, showModel }) {
         </div>
         <div className={styles.frame1_nav + " flex-center-center"}>
           <Link href="/">
-            <div>首页</div>
+            <div className={router.route === "/" ? styles.bottom : ""}>首页</div>
           </Link>
           <Link href="/about-us">
-            <div>关于我们</div>
+            <div className={router.route === "/about-us" ? styles.bottom : ""}>关于我们</div>
           </Link>
           <Link href="/join">
-            <div>加入我们</div>
+            <div className={router.route === "/join" ? styles.bottom : ""}>加入我们</div>
           </Link>
           <div className={styles.search} onClick={handleSearch}>
             <Image src={mode === "default" ? search1 : search} />
@@ -101,18 +101,18 @@ export default function Head({ vh, showModel }) {
       </div>
       <div className={styles.frame1_nav + " flex-center-center"}>
         <Link href="/">
-          <div>首页</div>
+          <div className={router.route === "/" ? styles.bottom : ""}>首页</div>
         </Link>
         <Link href="/about-us">
-          <div>关于我们</div>
+          <div className={router.route === "/about-us" ? styles.bottom : ""}>关于我们</div>
         </Link>
-        <Link href="/join/joinus">
-          <div>加入我们</div>
+        <Link href="/join">
+          <div className={router.route.search("/join") !== -1 ? styles.bottom : ""}>加入我们</div>
         </Link>
         <div className={styles.search} onClick={handleSearch}>
           <Image src={search} />
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
