@@ -10,7 +10,7 @@ import Frame3 from "../components/frame3";
 import Frame2 from "../components/frame2";
 import Frame1 from "../components/frame1";
 import Slider from "react-slick";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const frames = [
   Frame2,
@@ -29,23 +29,39 @@ const frames = [
  * about-us首页
  */
 
-const count = (left, right) => {
-  let i = 0;
-  return (left, right) => {
-    if (left) {
-      i++;
-    }
 
-    if (right) {
-      i--;
-    }
-    return i;
-  };
-}
+
+// const count1 = (left, right) => {
+//   let i = 0;
+//   return (left, right) => {
+//     if (left) {
+//       i++;
+//     }
+
+//     if (right) {
+//       i--;
+//     }
+//     return i;
+//   };
+// }
 
 
 export default function Home({ vh }) {
   const slider = useRef(null);
+
+  let [slideCount, setSlideCount] = useState(0);
+  let [cardCount, setCardCount] = useState(1);
+
+  const count1 = (count) => {
+    console.log("slideCount", count);
+    setSlideCount(count);
+  }
+
+  const count2 = (count) => {
+    console.log("cardCount", count);
+    setCardCount(count);
+  }
+
 
   const settings = {
     speed: 800,
@@ -63,11 +79,24 @@ export default function Home({ vh }) {
 
   return (
     <>
-      <Frame1 vh={vh} slider={slider} />
+      <Frame1 vh={vh} slider={slider} count1={slideCount} count2={cardCount}/>
       <Slider {...settings} ref={slider}>
-        {frames.map((Item, index) => (
-          <Item vh={vh} key={index} />
-        ))}
+        {frames.map((Item, index) => {
+          if (index === 2) {
+            return (
+              <Item vh={vh} key={index} count={count1} slideCount={slideCount} />
+            )
+          } else if (index === 6) {
+            return (
+              <Item vh={vh} key={index} count={count2} slideCount={cardCount} />
+            )
+          }
+          else {
+            return (
+              <Item vh={vh} key={index} />
+            )
+          }
+        })}
       </Slider>
       <Frame11 vh={vh} />
     </>

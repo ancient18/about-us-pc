@@ -23,7 +23,7 @@ let app,
   $slider,
   current = 0;
 
-export default function Frame1({ vh, slider }) {
+export default function Frame1({ vh, slider, count1, count2 }) {
   const $ban = useRef(null);
   const $yes = useRef(null);
   const $juanjuan = useRef(null);
@@ -33,13 +33,17 @@ export default function Frame1({ vh, slider }) {
   const $quanquan = useRef(null);
   const $ball = useRef(null);
   // 记录轮播图滑动次数
-  let sliderCount = 0;
+  let sliderCountRef = useRef(count1);
   // 记录卡片滑动次数
-  let detailCount = 1;
+  let cardCountRef = useRef(count2);
 
   useEffect(() => {
+    sliderCountRef.current = count1;
+  }, [count1]);
 
-  })
+  useEffect(() => {
+    cardCountRef.current = count2;
+  }, [count2]);
 
 
   const fn = throttle((e) => {
@@ -61,14 +65,22 @@ export default function Frame1({ vh, slider }) {
         return;
       }
       else if (current === 2) {
-        sliderCount++;
-        if (sliderCount < 5) {
-          current--;
+        //  sliderCountRef.current++;
+        // if ( sliderCountRef.current < 5) {
+        //   current--;
+        // }
+        if (sliderCountRef.current !== 4) {
+          console.log("下滑", sliderCountRef.current);
+          return;
         }
       } else if (current === 6) {
-        detailCount++;
-        if (detailCount < 6) {
-          current--;
+        // detailCount++;
+        // if (detailCount < 6) {
+        //   current--;
+        // }
+        if (cardCountRef.current !== 5) {
+          console.log("下滑", cardCountRef.current);
+          return;
         }
       }
       current++;
@@ -86,15 +98,25 @@ export default function Frame1({ vh, slider }) {
         }, 1)
         return;
       } else if (current === 2) {
-        sliderCount--;
-        if (sliderCount >= 0) {
-          current++;
+        // console.log( sliderCountRef.current);
+        //  sliderCountRef.current--;
+        // if ( sliderCountRef.current >= 0) {
+        //   current++;
+        // }
+        if (sliderCountRef.current !== 0) {
+          console.log("上滑", sliderCountRef.current);
+          return;
         }
       } else if (current === 6) {
-        detailCount--;
+        // detailCount--;
 
-        if (detailCount >= 0) {
-          current++;
+        // if (detailCount >= 0) {
+        //   current++;
+        // }
+
+        if (cardCountRef.current !== 0) {
+          console.log("上滑", cardCountRef.current);
+          return;
         }
       }
       else if (current === 0) {
@@ -107,6 +129,8 @@ export default function Frame1({ vh, slider }) {
     }
     slider.current?.slickGoTo(current);
   }, 1000);
+
+
 
 
   const wheel = (e) => {
@@ -171,6 +195,16 @@ export default function Frame1({ vh, slider }) {
       }, 500);
     }
   }, [vh]);
+
+  // useEffect(() => {
+  //   if ( sliderCountRef.current === 0) {
+  //     current = 0;
+  //   } else if ( sliderCountRef.current === 4) {
+  //     current = 2;
+  //   }
+
+  // }, [ sliderCountRef.current])
+
   return (
     <div style={{ backgroundColor: "black" }}>
       <div className={styles.frame} ref={$frame}>

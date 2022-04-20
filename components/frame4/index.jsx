@@ -14,8 +14,10 @@ import { useState, useRef, useEffect } from "react";
 import throttle from "../../util/throttle";
 
 
-export default function Frame4({ vh }) {
+export default function Frame4({ vh, count }) {
   let [choose, setChoose] = useState(0);
+
+  let chooseRef = useRef(choose);
   const createNav = () => {
     const navs = [];
     for (let i = 0; i < 5; i++) {
@@ -37,13 +39,14 @@ export default function Frame4({ vh }) {
 
   const frame4Ref = useRef(null);
 
+
   useEffect(() => {
     document.querySelectorAll("span").forEach((item) => {
       item.style.width = "100%";
       item.style.height = "100%";
     })
+    frame4Ref.current.addEventListener("wheel", wheel);
 
-    frame4Ref.current.addEventListener("wheel", wheel)
   }, [])
   const mouseDown = (e) => {
     if (e.target.tagName !== "IMG") {
@@ -65,10 +68,12 @@ export default function Frame4({ vh }) {
       lastX = e.clientX;
 
       if (lastX - initX > 300 && choose > 0) {
-        setChoose(choose - 1);
+        setChoose(choose - 1)
       } else if (initX - lastX > 300 && choose < 4) {
-        setChoose(choose + 1);
+        setChoose(choose + 1)
       }
+
+      count(choose);
       setTimeout(() => {
         frame4Ref.current.style.left = "0px"
       })
@@ -77,22 +82,36 @@ export default function Frame4({ vh }) {
     }
   }
 
+  useEffect(() => {
+    chooseRef.current = choose;
+  }, [choose])
+
+  // useEffect(() => {
+  //   frame4Ref.current.addEventListener("wheel", wheel);
+  //   return () => {
+  //     frame4Ref.current.removeEventListener("wheel", wheel);
+  //   }
+  // }, [choose])
+
 
   const fn = throttle((e) => {
+
     if (e.wheelDelta < 0) {
-      console.log(choose);
-      if (choose < 4) {
-        setChoose(choose + 1);
-        choose++;
+      if (chooseRef.current < 4) {
+        setChoose(chooseRef.current + 1);
       }
     }
     else if (e.wheelDelta > 0) {
-      if (choose > 0) {
-        setChoose(choose - 1);
-        choose--;
+      if (chooseRef.current > 0) {
+        setChoose(chooseRef.current - 1);
       }
     }
+    console.log("chooseRef.current", chooseRef.current);
+    count(chooseRef.current);
+
   }, 800);
+
+
 
   const wheel = (e) => {
     fn(e);

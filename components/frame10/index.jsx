@@ -314,7 +314,7 @@ export default function Frame10({ vh }) {
 
   return (
     <div className={styles.frame}>
-      <div className={styles.square} style={{ top: 136 * vh }} ref={$square}>
+      <div className={styles.square} style={{ top: 176 * vh }} ref={$square}>
         <Image src={square} />
       </div>
       <canvas id="canvas" className={styles.canvas} height={600 * vh} ref={canvasRef} ></canvas>

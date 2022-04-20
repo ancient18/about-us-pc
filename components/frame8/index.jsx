@@ -45,6 +45,7 @@ const Event = ({
   setSelect,
   marginLeft,
   vw,
+  count
 }) => (
   <div
     className={
@@ -58,6 +59,7 @@ const Event = ({
     }}
     onClick={() => {
       setSelect(index);
+      count(index);
     }}
   >
     <div
@@ -88,11 +90,12 @@ const Event = ({
   </div>
 );
 
-export default function Frame8({ vh }) {
+export default function Frame8({ vh, count }) {
   const [vw, setVw] = useState(0);
   const [select, setSelect] = useState(0);
   const $frame = useRef(null);
   const $heart = useRef(null);
+  let selectRef = useRef(select);
 
   useEffect(() => {
     if (!vh || !vw) {
@@ -123,7 +126,7 @@ export default function Frame8({ vh }) {
       item.style.setProperty('height', '100%', 'important');
     })
 
-    // $frame.current.addEventListener("wheel", wheel);
+    $frame.current.addEventListener("wheel", wheel);
     // let $vw = 1/14.4;
     setVw($vw);
   }, []);
@@ -137,24 +140,18 @@ export default function Frame8({ vh }) {
 
 
   const fn = throttle((e) => {
-    if (e.nativeEvent.wheelDelta < 0) {
-      if (select < 6) {
-        setTimeout(() => {
-          setSelect(select + 1);
-          select++;
-        },200)
-
+    if (e.wheelDelta < 0) {
+      if (selectRef.current < 6) {
+        setSelect(selectRef.current + 1);
       }
     }
-    else if (e.nativeEvent.wheelDelta > 0) {
-      if (select > 0) {
-        setTimeout(() => {
-          setSelect(select - 1);
-          select--;
-        },200)
-
+    else if (e.wheelDelta > 0) {
+      if (selectRef.current > 0) {
+        setSelect(selectRef.current - 1);
       }
     }
+
+    count(selectRef.current);
   }, 800);
 
   const wheel = (e) => {
@@ -164,6 +161,7 @@ export default function Frame8({ vh }) {
 
   useEffect(() => {
     let timer;
+    selectRef.current = select;
     if (select === 6) {
       timer = setTimeout(() => {
         $heart.current.style.display = "block";
@@ -183,7 +181,7 @@ export default function Frame8({ vh }) {
       //   transform: `translateX(-${select > 1 ? offset[select - 2] : 0}vw)`,
       // }}
       ref={$frame}
-      onWheel={throttle((e) => { fn(e) }, 800)}
+
     >
       <div className={styles.square} style={{ top: 153 * vh }}>
         <Image src={square} />
@@ -206,6 +204,7 @@ export default function Frame8({ vh }) {
               index={index}
               setSelect={setSelect}
               key={index}
+              count={count}
             />
           );
         })}

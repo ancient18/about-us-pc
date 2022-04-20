@@ -123,8 +123,6 @@ export default function Frame6({ vh }) {
     })
   }
 
-
-
   const click = (e) => {
     const mutiple = document.querySelector("body").clientWidth / 1440;
     let container;
