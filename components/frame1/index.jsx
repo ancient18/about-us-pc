@@ -78,7 +78,7 @@ export default function Frame1({ vh, slider, count1, count2 }) {
         // if (detailCount < 6) {
         //   current--;
         // }
-        if (cardCountRef.current !== 5) {
+        if (cardCountRef.current !== 6) {
           console.log("下滑", cardCountRef.current);
           return;
         }
