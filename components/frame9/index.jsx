@@ -21,8 +21,10 @@ export default function Frame9({ vh }) {
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute("aria-hidden") === "false") {
-        $img.current.style.display = "block";
-        setVisible(true);
+        setTimeout(() => {
+          $img.current.style.display = "block";
+          setVisible(true);
+        }, 0)
       }
       else {
         setTimeout(() => {
@@ -42,7 +44,7 @@ export default function Frame9({ vh }) {
 
   return (
     <div className={styles.frame} ref={$body}>
-      <div className={styles.vector}  ref={$img}>
+      <div className={styles.vector} ref={$img}>
         {<Image src={visible ? img4 : vector}></Image>}
       </div>
       <div className={styles.font1 + " font2"} style={{ top: 111 * vh }}>

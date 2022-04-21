@@ -18,8 +18,13 @@ export default function Frame3({ vh }) {
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute("aria-hidden") === "false") {
-        $img.current.style.display = "block";
-        setVisible(true);
+        // 切换路由有问题
+        console.log("observe");
+        setTimeout(() => {
+          $img.current.style.display = "block";
+          setVisible(true);
+        }, 0)
+
       }
       else {
         setTimeout(() => {
@@ -60,6 +65,7 @@ export default function Frame3({ vh }) {
         </span>
         <div className={styles.img1} ref={$img}>
           {<Image src={visible ? img1 : vector2}></Image>}
+          {/* {visible ? <Image src={img1}></Image> : null} */}
         </div>
       </div>
     </div>

@@ -47,18 +47,16 @@ export default function Frame1({ vh, slider, count1, count2 }) {
     cardCountRef.current = count2;
   }, [count2]);
 
-  useEffect(() => {
-    return () => {
-      document.querySelector("body").removeEventListener("wheel", wheel);
-    }
-  }, [])
-
-
+  // useEffect(() => {
+  //   return () => {
+  //     document.querySelector("body").removeEventListener("wheel", wheel);
+  //   }
+  // }, [])
 
   const fn = throttle((e) => {
     if (e.wheelDelta < 0) {
 
-      document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'absolute', 'important');
+      // document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'absolute', 'important');
 
       if (current === 8) {
         let init = app.scrollTop
@@ -97,7 +95,7 @@ export default function Frame1({ vh, slider, count1, count2 }) {
       current++;
     } else if (e.wheelDelta > 0) {
 
-      document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'fixed', 'important');
+      // document.querySelector(".head_frame1_bar__Pk4Dv").style.setProperty('position', 'fixed', 'important');
       if (current === 9) {
         current = 8;
         let init = app.scrollTop
@@ -320,6 +318,5 @@ export default function Frame1({ vh, slider, count1, count2 }) {
 
       </div>
     </div>
-
   );
 }

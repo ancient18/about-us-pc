@@ -20,8 +20,10 @@ export default function Frame5({ vh }) {
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute("aria-hidden") === "false") {
-        $img.current.style.display = "block";
-        setVisible(true);
+        setTimeout(() => {
+          $img.current.style.display = "block";
+          setVisible(true);
+        },0)
       }
       else {
         setTimeout(() => {
