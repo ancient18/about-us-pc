@@ -2,36 +2,29 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import vector2 from "../../assets/img/frame3/Vector 43.png";
 import img1 from "../../assets/线条动画/img1.webp"
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Frame3({ vh }) {
   const $body = useRef(null);
   const $img = useRef(null);
+  let [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    $img.current.querySelectorAll("span").forEach((item) => {
+      item.style.width = "100%";
+      item.style.height = "100%";
+    })
 
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
-      // console.log("MutationObserver");
       if (container.getAttribute("aria-hidden") === "false") {
-        // console.log($img.current.querySelectorAll("img"));
-        // console.log($img.current.querySelector("img"));
-        // $img.current.querySelectorAll("img")[1].src = vector2.src;
-        // $img.current.style.display = "block";
-        // 试下删除和添加节点
-        console.log($img.current.querySelectorAll("img")[1].getAttribute("aria-hidden"));
-
-        console.log(container);
-
-        // console.log("有");
+        $img.current.style.display = "block";
+        setVisible(true);
       }
       else {
         setTimeout(() => {
-          // $img.current.style.display = "none";
-          // console.log("无");
-          console.log(container);
-          console.log($img.current.querySelectorAll("img")[1].getAttribute("aria-hidden"));
-
+          setVisible(false);
+          $img.current.style.display = "none";
         }, 500);
       }
     });
@@ -41,13 +34,6 @@ export default function Frame3({ vh }) {
       childList: true,
       subtree: true,
     });
-  }, []);
-
-  useEffect(() => {
-    $img.current.querySelectorAll("span").forEach((item) => {
-      item.style.width = "100%";
-      item.style.height = "100%";
-    })
   }, []);
 
 
@@ -73,11 +59,7 @@ export default function Frame3({ vh }) {
           我们的产品吧!
         </span>
         <div className={styles.img1} ref={$img}>
-          <Image src={img1}></Image>
-          {/* <div className={styles.mySprite} ref={$img} style={{
-            top: 232 * vh,
-            height: 50 * vh,
-          }}></div> */}
+          {<Image src={visible ? img1 : vector2}></Image>}
         </div>
       </div>
     </div>
