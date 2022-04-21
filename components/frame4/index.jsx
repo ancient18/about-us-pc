@@ -86,13 +86,6 @@ export default function Frame4({ vh, count }) {
     chooseRef.current = choose;
   }, [choose])
 
-  // useEffect(() => {
-  //   frame4Ref.current.addEventListener("wheel", wheel);
-  //   return () => {
-  //     frame4Ref.current.removeEventListener("wheel", wheel);
-  //   }
-  // }, [choose])
-
 
   const fn = throttle((e) => {
 

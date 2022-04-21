@@ -43,7 +43,7 @@ export default function Frame5({ vh }) {
         className={styles.font1 + " font2"}
         style={{
           height: 34 * vh,
-          top: 177 * vh,
+          top: 217 * vh,
         }}
       >
         关于
@@ -52,7 +52,7 @@ export default function Frame5({ vh }) {
         className={styles.font2 + " font3"}
         style={{
           height: 50 * vh,
-          top: 242 * vh,
+          top: 272 * vh,
         }}
       >
         我们的部门！

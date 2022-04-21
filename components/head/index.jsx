@@ -44,6 +44,13 @@ export default function Head({ vh, showModel }) {
   useEffect(() => {
     if (router.route === "/about-us") document.onmousewheel = whell;
     else document.onmousewheel = null;
+
+    if (router.route === "/" || router.route.search("join") != -1) {
+      // $head.current.style.position = "realative";
+      $head.current.style.setProperty('position', 'relative', 'important');
+      console.log("改变");
+
+    }
   }, [router.route, mode]);
   if (router.route === "/about-us")
     return (

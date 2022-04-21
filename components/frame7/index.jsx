@@ -2,21 +2,35 @@ import styles from "./index.module.css";
 import vector4 from "../../assets/img/frame7/Vector 43.png";
 import Image from "next/image";
 import square from "../../assets/网页动效/无限循环.webp";
-import { useEffect, useRef } from "react";
+import img3 from "../../assets/线条动画/img3.webp"
+import { useEffect, useRef, useState } from "react";
 
 export default function Frame7({ vh }) {
   const $body = useRef(null);
   const $img = useRef(null);
+  const $box2 = useRef(null);
+  let [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    $img.current.querySelectorAll("span").forEach((item) => {
+      item.style.width = "100%";
+      item.style.height = "100%";
+    });
+    $box2.current.querySelectorAll("span").forEach((item) => {
+      item.style.width = "100%";
+      item.style.height = "100%";
+    })
+
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute("aria-hidden") === "false") {
-        $img.current.style.animation =
-          "frame9_myAnimation__A18mr 2.04s steps(1) forwards";
-      } else {
+        $img.current.style.display = "block";
+        setVisible(true);
+      }
+      else {
         setTimeout(() => {
-          $img.current.style.animation = "";
+          setVisible(false);
+          $img.current.style.display = "none";
         }, 500);
       }
     });
@@ -27,26 +41,26 @@ export default function Frame7({ vh }) {
       subtree: true,
     });
 
-    const imgArr = document
-      .getElementsByClassName(styles.frame)[0]
-      .querySelectorAll("img");
+    // const imgArr = document
+    //   .getElementsByClassName(styles.frame)[0]
+    //   .querySelectorAll("img");
 
-    imgArr.forEach((item) => {
-      if (item.className === "square") {
-        item.style.height = "16vh";
-        item.style.width = "33vh";
-        item.style.top = "-5vh";
-        item.style.left = "-15vh";
-        item.style["min-width"] = "";
-        item.style["min-height"] = "";
-        item.style["max-width"] = "";
-        item.style["max-height"] = "";
-        item.parentNode.style.width = "20vh";
-        item.parentNode.style.height = "20vh";
-        item.parentNode.style["max-width"] = "";
-      }
-    });
-  });
+    // imgArr.forEach((item) => {
+    //   if (item.className === "square") {
+    //     item.style.height = "16vh";
+    //     item.style.width = "33vh";
+    //     item.style.top = "-5vh";
+    //     item.style.left = "-15vh";
+    //     item.style["min-width"] = "";
+    //     item.style["min-height"] = "";
+    //     item.style["max-width"] = "";
+    //     item.style["max-height"] = "";
+    //     item.parentNode.style.width = "20vh";
+    //     item.parentNode.style.height = "20vh";
+    //     item.parentNode.style["max-width"] = "";
+    //   }
+    // });
+  }, []);
   return (
     <div className={styles.frame} ref={$body}>
       <div
@@ -54,9 +68,9 @@ export default function Frame7({ vh }) {
         style={{
           marginTop: 117 * vh,
         }}
+        ref={$img}
       >
-        {/* <Image src={vector4}></Image> */}
-        <div className={styles.mySprite} ref={$img}></div>
+        {<Image src={visible ? img3 : vector4}></Image>}
       </div>
       <div
         style={{
@@ -64,6 +78,7 @@ export default function Frame7({ vh }) {
           alignItems: "flex-start",
           flexDirection: "column",
         }}
+        className={styles.text}
       >
         <div
           className={"font2"}
@@ -86,9 +101,7 @@ export default function Frame7({ vh }) {
       </div>
       <div
         className={styles.box2}
-        style={{
-          marginTop: 129 * vh,
-        }}
+        ref={$box2}
       >
         <Image className="square" src={square}></Image>
       </div>
