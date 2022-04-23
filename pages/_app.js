@@ -42,9 +42,9 @@ function MyApp({ Component, pageProps }) {
   }, 1000);
   useEffect(() => {
     let body = document.querySelector("body");
-    setVh(body.clientHeight / 720);
+    setVh(body.clientWidth / 1440);
     window.onresize = () => {
-      $setVh(body.clientHeight / 720);
+      $setVh(body.clientWidth / 1440);
     };
     model.current.querySelectorAll("span").forEach((item) => {
       item.style.setProperty("width", "100%", "important");
