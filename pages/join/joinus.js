@@ -6,7 +6,7 @@ import { getCard, getQAndA } from "../../api";
 import Icon from "../../components/Icon";
 import Tab from "../../components/tab";
 import styles from "../../styles/join.module.css";
-import blurWEB from "../../assets/网页动效/blurWEB.png"
+import blurWEB from "../../assets/网页动效/blurWeB.png"
 
 const settings = {
   dots: false,

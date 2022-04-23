@@ -18,8 +18,6 @@ export default function Frame3({ vh }) {
     const container = $body.current.parentNode.parentNode;
     const animation = new MutationObserver((mu, ob) => {
       if (container.getAttribute("aria-hidden") === "false") {
-        // 切换路由有问题
-        console.log("observe");
         setTimeout(() => {
           $img.current.style.display = "block";
           setVisible(true);
@@ -39,8 +37,8 @@ export default function Frame3({ vh }) {
       childList: true,
       subtree: true,
     });
-  }, []);
 
+  }, []);
 
   return (
     <div className={styles.frame} ref={$body}>

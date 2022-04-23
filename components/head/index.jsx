@@ -44,8 +44,7 @@ export default function Head({ vh, showModel }) {
   useEffect(() => {
     if (router.route === "/about-us") document.onmousewheel = whell;
     else document.onmousewheel = null;
-    console.log(router.route);
-    
+
     if (router.route === "/" || router.route.search("join") != -1) {
       // $head.current.style.position = "realative";
       $head.current.style.setProperty('position', 'relative', 'important');
@@ -66,7 +65,6 @@ export default function Head({ vh, showModel }) {
         onMouseOver={() => {
           if (mode === "default") {
             setMode("over");
-            console.log("over");
           }
         }}
         onMouseLeave={() => {
